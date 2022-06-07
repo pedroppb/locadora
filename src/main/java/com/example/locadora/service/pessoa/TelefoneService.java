@@ -38,8 +38,20 @@ public class TelefoneService {
     }
 
     public void validar(Telefone telefone) {
-        if (telefone.getId() == 0 || telefone.getDdd() == null || telefone.getNumero() == null || telefone.getTipo() == null ) {
-            throw new NullPointerException("Disciplina inválida");
+        if(telefone.getNumero().equals("") || telefone.getNumero() == null )
+        {
+            throw new NullPointerException("Telefone com Numero inválido");
+        }
+        if(telefone.getTipo().equals("") || telefone.getTipo() == null )
+        {
+            throw new NullPointerException("Telefone com Tipo inválido");
+        }
+        if(telefone.getDdd().equals("") || telefone.getDdd() == null )
+        {
+            throw new NullPointerException("Telefone com Tipo inválido");
+        }
+        if (telefone.getId() == 0 || telefone.getId() == null  ) {
+            throw new NullPointerException("Telefone inválido");
         }
     }
 }

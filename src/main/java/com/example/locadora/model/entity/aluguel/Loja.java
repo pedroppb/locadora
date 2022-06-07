@@ -25,7 +25,5 @@ public class Loja {
     private Endereco endereco;
     @ManyToOne
     private Telefone telefone;
-    @ManyToOne
-    private Telefone celular;
 }
 

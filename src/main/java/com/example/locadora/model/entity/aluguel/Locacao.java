@@ -47,6 +47,8 @@ public class Locacao {
     private Funcionario funcionarioDevolucao;
     @ManyToOne
     private TipoAluguel tipoAluguel;
+    private float odometroRetirada;
+    private float odometroDevolucao;
     private float valor;
 
     @ManyToMany

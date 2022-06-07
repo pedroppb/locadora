@@ -36,5 +36,7 @@ public class Reserva {
     @ManyToOne
     private TipoAluguel tipoAluguel;
 
+    private float valor;
+
 }
 

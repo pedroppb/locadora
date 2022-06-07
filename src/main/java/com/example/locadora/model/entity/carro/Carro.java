@@ -20,11 +20,11 @@ public class Carro {
     private String placa;
     private String chassi;
     @ManyToOne
+    private Modelo modelo;
+    @ManyToOne
     private Categoria categoria;
     @ManyToOne
     private Loja loja;
-    @ManyToOne
-    private Modelo modelo;
     private int anoFabricacao;
     private float odometro;
     private Integer estado;
