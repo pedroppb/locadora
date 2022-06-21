@@ -17,7 +17,7 @@ public class Extra {
     private Long id;
     private String numero;
     @ManyToOne
-    private TipoExtra tipo;
+    private TipoExtra tipoExtra;
     private float valor;
     private LocalDate dataVencimento;
     private LocalDate dataPagamento;

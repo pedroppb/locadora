@@ -25,12 +25,10 @@ public class Reserva {
     private Cliente cliente;
     @ManyToOne
     private Loja lojaRetirada;
-    private LocalDate dataRetirada;
-    private LocalTime horaRetirada;
+    private LocalDateTime dataHoraRetirada;
     @ManyToOne
     private Loja lojaProgramada;
-    private LocalDate dataProgramada;
-    private LocalTime horaProgramada;
+    private LocalDateTime dataHoraProgramada;
     @ManyToOne
     private Categoria categoria;
     @ManyToOne

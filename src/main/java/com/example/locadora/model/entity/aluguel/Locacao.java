@@ -31,18 +31,16 @@ public class Locacao {
     private Carro carro;
     @ManyToOne
     private Loja lojaRetirada;
-    private LocalDate dataRetirada;
-    private LocalTime horaRetirada;
+    private LocalDateTime dataHoraRetirada;
     @ManyToOne
     private Funcionario funcionarioRetirada;
     @ManyToOne
     private Loja lojaProgramada;
-    private LocalDate dataProgramada;
-    private LocalTime horaProgramada;
+    private LocalDateTime dataHoraProgramada;
     @ManyToOne
     private Loja lojaDevolucao;
-    private LocalDate dataDevolucao;
-    private LocalTime horaDevolucao;
+    private LocalDateTime dataHoraDevolucao;
+
     @ManyToOne
     private Funcionario funcionarioDevolucao;
     @ManyToOne

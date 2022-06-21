@@ -23,6 +23,9 @@ public class Loja {
     private String horaFechamento;
     @ManyToOne
     private Endereco endereco;
+    private String numero;
+    private String complemento;
+    private String pontoReferencia;
     @ManyToOne
     private Telefone telefone;
 }

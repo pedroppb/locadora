@@ -17,7 +17,7 @@ public class TelefoneService {
         this.repository = repository;
     }
 
-    public List<Telefone> getTelefone() {
+    public List<Telefone> getTelefones() {
         return repository.findAll();
     }
 
@@ -38,15 +38,15 @@ public class TelefoneService {
     }
 
     public void validar(Telefone telefone) {
-        if(telefone.getNumero().equals("") || telefone.getNumero() == null )
+        if(telefone.getNumero().trim().equals("") || telefone.getNumero() == null )
         {
             throw new NullPointerException("Telefone com Numero inválido");
         }
-        if(telefone.getTipo().equals("") || telefone.getTipo() == null )
+        if(telefone.getTipo().trim().equals("") || telefone.getTipo() == null )
         {
             throw new NullPointerException("Telefone com Tipo inválido");
         }
-        if(telefone.getDdd().equals("") || telefone.getDdd() == null )
+        if(telefone.getDdd().trim().equals("") || telefone.getDdd() == null )
         {
             throw new NullPointerException("Telefone com Tipo inválido");
         }

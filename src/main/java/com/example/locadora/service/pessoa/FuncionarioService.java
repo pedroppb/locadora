@@ -5,9 +5,6 @@ import com.example.locadora.model.repository.pessoa.FuncionarioRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Method;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -20,7 +17,7 @@ public class FuncionarioService {
         this.repository = repository;
     }
 
-    public List<Funcionario> getFuncionario() {
+    public List<Funcionario> getFuncionarios() {
         return repository.findAll();
     }
 
@@ -41,29 +38,43 @@ public class FuncionarioService {
     }
 
     public void validar(Funcionario funcionario) {
-        String[] othervar = new String[] {"Endereco","Loja","Cargo","DataAdmissao"};
-        String[] strvar = new String[] {"Nome","Senha","Cpf","Rg","Email"};
 
-        Class classe = funcionario.getClass();
-        Object objeto = funcionario;
-        try {
-            objeto = classe.getDeclaredConstructor().newInstance();
-        } catch (Exception ex) {
-            throw new IllegalArgumentException("Serviço inexistente");
+        if(funcionario.getNome().trim().equals("") || funcionario.getNome() == null )
+        {
+            throw new NullPointerException("Funcionario com Nome inválido");
         }
-        if (!(objeto instanceof Funcionario) ) {
-            throw new IllegalArgumentException("Serviço inválido");
+        if(funcionario.getSenha().trim().equals("") || funcionario.getSenha() == null )
+        {
+            throw new NullPointerException("Funcionario com Senha inválida");
         }
-        for ( String str : strvar) {
-
-    }
-
-       /* for (String str : othervar ) {
-            String metodo = "get"+str+"()";
-            String metodoid = "get"+str+"().getId()";
-            if ( funcionario.&metodo == null || funcionario.&metodoid == null || funcionario.&metodoid == 0
-            ) throw new NullPointerException("funcionario com %s inválido",str);
-        }*/
+        if(funcionario.getCpf().trim().equals("") || funcionario.getCpf() == null )
+        {
+            throw new NullPointerException("Funcionario com Cpf inválido");
+        }
+        if(funcionario.getRg().trim().equals("") || funcionario.getRg() == null )
+        {
+            throw new NullPointerException("Funcionario com Rg inválido");
+        }
+        if(funcionario.getEmail().trim().equals("") || funcionario.getEmail() == null )
+        {
+            throw new NullPointerException("Funcionario com Email inválido");
+        }
+        if(funcionario.getDataAdmissao().equals(null))
+        {
+            throw new NullPointerException("Funcionario com DataAdmissao inválido");
+        }
+        if(funcionario.getEndereco() == null || funcionario.getEndereco().getId() == null || funcionario.getEndereco().getId() == 0 )
+        {
+            throw new NullPointerException("Funcionario com Endereco inválido");
+        }
+        if(funcionario.getLoja() == null || funcionario.getLoja().getId() == null || funcionario.getLoja().getId() == 0 )
+        {
+            throw new NullPointerException("Funcionario com Loja inválido");
+        }
+        if(funcionario.getCargo() == null || funcionario.getCargo().getId() == null || funcionario.getCargo().getId() == 0 )
+        {
+            throw new NullPointerException("Funcionario com Cargo inválido");
+        }
 
         if (funcionario.getId() == 0 || funcionario.getId() == null  ) {
             throw new NullPointerException("funcionario inválido");
