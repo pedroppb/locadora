@@ -11379,7 +11379,7 @@
 											"top": 1191,
 											"width": 331.51904296875,
 											"height": 13,
-											"text": "TipoExtra"
+											"text": "TipoAluguel"
 										},
 										{
 											"_type": "LabelView",
@@ -11502,7 +11502,7 @@
 											"top": 1252,
 											"width": 331.51904296875,
 											"height": 13,
-											"text": "+TipoExtra(cargo: Cargo, nome: String, descricao: String)",
+											"text": "+TipoAluguel(cargo: Cargo, nome: String, descricao: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -11519,7 +11519,7 @@
 											"top": 1267,
 											"width": 331.51904296875,
 											"height": 13,
-											"text": "+editaTipoExtra(cargo: Cargo, campo: int, novo: String)",
+											"text": "+editaTipoAluguel(cargo: Cargo, campo: int, novo: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -11753,7 +11753,7 @@
 											"top": 1221,
 											"width": 92.853515625,
 											"height": 13,
-											"text": "+tipo: TipoExtra",
+											"text": "+tipo: TipoAluguel",
 											"horizontalAlignment": 0
 										},
 										{
@@ -15977,7 +15977,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "TipoExtra",
+					"name": "TipoAluguel",
 					"attributes": [
 						{
 							"_type": "UMLAttribute",
@@ -16005,7 +16005,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/CbweDkHhyQc="
 							},
-							"name": "TipoExtra",
+							"name": "TipoAluguel",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -16044,7 +16044,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/CbweDkHhyQc="
 							},
-							"name": "editaTipoExtra",
+							"name": "editaTipoAluguel",
 							"parameters": [
 								{
 									"_type": "UMLParameter",

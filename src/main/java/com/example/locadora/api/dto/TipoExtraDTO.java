@@ -8,9 +8,9 @@ public class TipoExtraDTO {
     private String nome;
     private String descricao;
 
-    public  static TipoExtraDTO create(TipoExtra tipoExtra){
+    public  static TipoAluguelDTO create(TipoExtra tipoExtra){
         ModelMapper modelMapper = new ModelMapper();
-        TipoExtraDTO dto = modelMapper.map(tipoExtra, TipoExtraDTO.class);
+        TipoAluguelDTO dto = modelMapper.map(tipoExtra, TipoAluguelDTO.class);
 
         return dto;
     }

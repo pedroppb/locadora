@@ -15,12 +15,11 @@ public class ModeloDTO {
 
     private Long id;
     private String nome;
-    private Modelo modelo;
+    private long idMarcaCarro;
 
-    public static ModeloDTO create(ModeloDTO modelo){
+    public static ModeloDTO create(Modelo modelo){
         ModelMapper modelMapper = new ModelMapper();
         ModeloDTO dto = modelMapper.map(modelo, ModeloDTO.class);
-
         return dto;
     }
 }

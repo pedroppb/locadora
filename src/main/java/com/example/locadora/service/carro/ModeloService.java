@@ -43,7 +43,7 @@ public class ModeloService {
         {
             throw new NullPointerException("Modelo com Nome inválido");
         }
-        if(modelo.getMarca() == null || modelo.getMarca().getId() == null || modelo.getMarca().getId() == 0 )
+        if(modelo.getMarcaCarro() == null || modelo.getMarcaCarro().getId() == null || modelo.getMarcaCarro().getId() == 0 )
         {
             throw new NullPointerException("Modelo com Marca inválido");
         }

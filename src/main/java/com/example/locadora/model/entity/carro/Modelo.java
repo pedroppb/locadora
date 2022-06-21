@@ -16,5 +16,5 @@ public class Modelo {
     private Long id;
     private String nome;
     @ManyToOne
-    private MarcaCarro marca;
+    private MarcaCarro marcaCarro;
 }

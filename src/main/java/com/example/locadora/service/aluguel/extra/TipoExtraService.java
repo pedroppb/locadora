@@ -17,7 +17,7 @@ public class TipoExtraService {
         this.repository = repository;
     }
 
-    public List<TipoExtra> getTipoAluguel() {
+    public List<TipoExtra> getTiposExtra() {
         return repository.findAll();
     }
 
@@ -40,11 +40,11 @@ public class TipoExtraService {
     public void validar(TipoExtra tipoExtra) {
         if(tipoExtra.getNome().trim().equals("") || tipoExtra.getNome() == null )
         {
-            throw new NullPointerException("TipoAluguel com Nome inválido");
+            throw new NullPointerException("TipoExtra com Nome inválido");
         }
         if(tipoExtra.getDescricao().trim().equals("") || tipoExtra.getDescricao () == null )
         {
-            throw new NullPointerException("TipoAluguel com Descricao inválido");
+            throw new NullPointerException("TipoExtra com Descricao inválido");
         }
         if (tipoExtra.getId() == 0 || tipoExtra.getId() == null  ) {
             throw new NullPointerException("TipoExtra inválido");

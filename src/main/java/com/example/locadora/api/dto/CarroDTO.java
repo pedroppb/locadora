@@ -35,7 +35,7 @@ public class CarroDTO {
         CarroDTO dto = modelMapper.map(carro, CarroDTO.class);
 
         dto.nomeModelo = carro.getModelo().getNome();
-        dto.nomeMarca = carro.getModelo().getMarca().getNome();
+        dto.nomeMarca = carro.getModelo().getMarcaCarro().getNome();
 
         return dto;
     }

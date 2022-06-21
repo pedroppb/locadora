@@ -1,8 +1,9 @@
 package com.example.locadora.api.controller;
 
+        import com.example.locadora.service.carro.TipoAluguelService;
         import com.example.locadora.api.dto.TipoAluguelDTO;
         import com.example.locadora.model.entity.carro.TipoAluguel;
-        import com.example.locadora.service.carro.TipoAluguelService;
+
         import lombok.RequiredArgsConstructor;
         import org.springframework.http.HttpStatus;
         import org.springframework.http.ResponseEntity;
@@ -13,21 +14,23 @@ package com.example.locadora.api.controller;
         import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/TipoAlugueis")
+@RequestMapping("/api/v1/TiposAluguel")
 @RequiredArgsConstructor
-public class  TipoAluguelController {
+
+public class TipoAluguelController {
 
     private final TipoAluguelService service;
 
+
     @GetMapping()
     public ResponseEntity get() {
-        List<TipoAluguel> TipoAlugueis = service.getTipoAlugueis();
-        return ResponseEntity.ok(TipoAlugueis.stream().map(TipoAluguelDTO::create).collect(Collectors.toList()));
+        List<TipoAluguel> TiposAluguel = service.getTiposAluguel();
+        return ResponseEntity.ok(TiposAluguel.stream().map(TipoAluguelDTO::create).collect(Collectors.toList()));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
-        Optional<TipoAluguel> tipoAluguel = service.geTipoAluguelById(id);
+        Optional<TipoAluguel> tipoAluguel = service.getTipoAluguelById(id);
         if (!tipoAluguel.isPresent()) {
             return new ResponseEntity("TipoAluguel não encontrado", HttpStatus.NOT_FOUND);
         }

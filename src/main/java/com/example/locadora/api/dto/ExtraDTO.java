@@ -8,7 +8,7 @@ public class ExtraDTO {
 
     private Long id;
     private String numero;
-    private TipoExtra tipo;
+    private TipoExtra TipoExtra;
     private float valor;
     private LocalDate dataVencimento;
     private LocalDate dataPagamento;

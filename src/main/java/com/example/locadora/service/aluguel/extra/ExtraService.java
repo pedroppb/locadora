@@ -40,7 +40,7 @@ public class ExtraService {
     public void validar(Extra extra) {
         if(extra.getTipoExtra() == null || extra.getTipoExtra().getId() == null || extra.getTipoExtra().getId() == 0 )
         {
-            throw new NullPointerException("Extra com TipoExtra inválido");
+            throw new NullPointerException("Extra com TipoAluguel inválido");
         }
         if( extra.getValor() <=0 )
         {

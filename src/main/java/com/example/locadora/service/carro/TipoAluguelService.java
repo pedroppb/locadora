@@ -17,11 +17,11 @@ public class TipoAluguelService {
         this.repository = repository;
     }
 
-    public List<TipoAluguel> getTipoAlugueis() {
+    public List<TipoAluguel> getTiposAluguel() {
         return repository.findAll();
     }
 
-    public Optional<TipoAluguel> geTipoAluguelById(Long id) {
+    public Optional<TipoAluguel> getTipoAluguelById(Long id) {
         return repository.findById(id);
     }
 

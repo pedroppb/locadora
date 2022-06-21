@@ -17,7 +17,7 @@ public class MarcaCarroService {
         this.repository = repository;
     }
 
-    public List<MarcaCarro> getMarcaCarros() {
+    public List<MarcaCarro> getMarcasCarro() {
         return repository.findAll();
     }
 
