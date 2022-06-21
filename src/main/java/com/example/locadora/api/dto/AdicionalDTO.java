@@ -1,8 +1,13 @@
 package com.example.locadora.api.dto;
 
 import com.example.locadora.model.entity.aluguel.Adicional;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
-
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AdicionalDTO {
 
     private Long id;
@@ -11,9 +16,7 @@ public class AdicionalDTO {
 
     public  static AdicionalDTO create(Adicional adicional){
         ModelMapper modelMapper = new ModelMapper();
-        AdicionalDTO dto = modelMapper.map(adicional, AdicionalDTO.class);
-
-        return dto;
+        return modelMapper.map(adicional, AdicionalDTO.class);
     }
 }
 

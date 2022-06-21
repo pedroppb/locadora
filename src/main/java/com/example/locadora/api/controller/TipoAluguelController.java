@@ -18,10 +18,7 @@ package com.example.locadora.api.controller;
 @RequiredArgsConstructor
 
 public class TipoAluguelController {
-
     private final TipoAluguelService service;
-
-
     @GetMapping()
     public ResponseEntity get() {
         List<TipoAluguel> TiposAluguel = service.getTiposAluguel();

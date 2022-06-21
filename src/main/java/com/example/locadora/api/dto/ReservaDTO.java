@@ -27,9 +27,6 @@ public class ReservaDTO {
 
     public static ReservaDTO create(Reserva reserva){
         ModelMapper modelMapper = new ModelMapper();
-        ReservaDTO dto = modelMapper.map(reserva, ReservaDTO.class);
-
-        //dto.valorReserva = reserva.setTipoAluguel();
-        return dto;
+        return modelMapper.map(reserva, ReservaDTO.class);
     }
 }

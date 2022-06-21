@@ -17,8 +17,6 @@ public class PrecoDTO {
 
     public static PrecoDTO create(Preco preco){
         ModelMapper modelMapper = new ModelMapper();
-        PrecoDTO dto = modelMapper.map(preco, PrecoDTO.class);
-
-        return dto;
+        return modelMapper.map(preco, PrecoDTO.class);
     }
 }
