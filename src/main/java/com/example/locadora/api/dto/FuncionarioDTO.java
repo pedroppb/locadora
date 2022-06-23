@@ -1,7 +1,7 @@
 package com.example.locadora.api.dto;
 
 import com.example.locadora.model.entity.pessoa.Funcionario;
-import com.example.locadora.model.entity.pessoa.endereco.Endereco;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -29,7 +29,12 @@ public class FuncionarioDTO {
     private String celularDdd;
     private String celularNumero;
 
-    private Endereco endereco;
+    private String nomePais;
+    private String nomeEstado;
+    private String nomeCidade;
+    private String cep;
+    private String rua;
+    private String bairro;
     private String numero;
     private String complemento;
     private String pontoReferencia;
@@ -43,6 +48,13 @@ public class FuncionarioDTO {
     public static FuncionarioDTO create(Funcionario funcionario){
         ModelMapper modelMapper = new ModelMapper();
         FuncionarioDTO dto = modelMapper.map(funcionario, FuncionarioDTO.class);
+
+        dto.nomePais = funcionario.getEndereco().getCidade().getEstado().getPais().getNome();
+        dto.nomeEstado = funcionario.getEndereco().getCidade().getEstado().getNome();
+        dto.nomeCidade = funcionario.getEndereco().getCidade().getNome();
+        dto.cep = funcionario.getEndereco().getCep();
+        dto.rua = funcionario.getEndereco().getRua();
+        dto.bairro = funcionario.getEndereco().getBairro();
 
         dto.fixoTipo = funcionario.getFixo().getTipo();
         dto.fixoDdd = funcionario.getFixo().getDdd();

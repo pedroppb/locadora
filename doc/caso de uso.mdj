@@ -14737,7 +14737,7 @@
 											"top": 549,
 											"width": 70.7763671875,
 											"height": 13,
-											"text": "funcionario"
+											"text": "reserva"
 										},
 										{
 											"_type": "LabelView",
@@ -16289,7 +16289,7 @@
 											"top": 411.5,
 											"width": 216,
 											"height": 13,
-											"text": "editar todos dados de funcionarios"
+											"text": "editar todos dados de reservas"
 										},
 										{
 											"_type": "LabelView",
@@ -19844,7 +19844,7 @@
 											"top": 483.5,
 											"width": 139,
 											"height": 13,
-											"text": "cadastrar funcionarios"
+											"text": "cadastrar reservas"
 										},
 										{
 											"_type": "LabelView",
@@ -20043,7 +20043,7 @@
 											"top": 587.5,
 											"width": 117,
 											"height": 13,
-											"text": "demitir funcionario"
+											"text": "demitir reserva"
 										},
 										{
 											"_type": "LabelView",
@@ -20541,7 +20541,7 @@
 											"top": 351,
 											"width": 558,
 											"height": 13,
-											"text": "permissoes funcionarios"
+											"text": "permissoes reservas"
 										},
 										{
 											"_type": "LabelView",
@@ -20843,7 +20843,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF+1IengCp7PYQ="
 					},
-					"name": "funcionario"
+					"name": "reserva"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -20936,7 +20936,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF+1IengCp7PYQ="
 					},
-					"name": "editar todos dados de funcionarios"
+					"name": "editar todos dados de reservas"
 				},
 				{
 					"_type": "UMLActor",
@@ -21095,7 +21095,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF+1IengCp7PYQ="
 					},
-					"name": "cadastrar funcionarios"
+					"name": "cadastrar reservas"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -21103,7 +21103,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF+1IengCp7PYQ="
 					},
-					"name": "demitir funcionario"
+					"name": "demitir reserva"
 				},
 				{
 					"_type": "UMLUseCase",
@@ -21127,7 +21127,7 @@
 					"_parent": {
 						"$ref": "AAAAAAF+1IengCp7PYQ="
 					},
-					"name": "permissoes funcionarios"
+					"name": "permissoes reservas"
 				},
 				{
 					"_type": "UMLUseCaseSubject",

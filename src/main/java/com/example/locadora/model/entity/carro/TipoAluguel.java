@@ -1,6 +1,5 @@
 package com.example.locadora.model.entity.carro;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

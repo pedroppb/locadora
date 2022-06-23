@@ -17,8 +17,6 @@ public class MarcaCarroDTO {
 
     public static MarcaCarroDTO create(MarcaCarro marcaCarro){
         ModelMapper modelMapper = new ModelMapper();
-        MarcaCarroDTO dto = modelMapper.map(marcaCarro, MarcaCarroDTO.class);
-
-        return dto;
+        return modelMapper.map(marcaCarro, MarcaCarroDTO.class);
     }
 }

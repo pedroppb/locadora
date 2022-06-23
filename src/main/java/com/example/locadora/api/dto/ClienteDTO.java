@@ -50,19 +50,22 @@ public class ClienteDTO {
     public static ClienteDTO create(Cliente cliente){
         ModelMapper modelMapper = new ModelMapper();
         ClienteDTO dto = modelMapper.map(cliente, ClienteDTO.class);
+        if(cliente.getFixo() != null) {
+            dto.fixoTipo = cliente.getFixo().getTipo();
+            dto.fixoDdd = cliente.getFixo().getDdd();
+            dto.fixoNumero = cliente.getFixo().getNumero();
+        }
+        if(cliente.getCelular() != null) {
+            dto.celularTipo = cliente.getCelular().getTipo();
+            dto.celularDdd = cliente.getCelular().getDdd();
+            dto.celularNumero = cliente.getCelular().getNumero();
+        }
 
-        dto.fixoTipo = cliente.getFixo().getTipo();
-        dto.fixoDdd = cliente.getFixo().getDdd();
-        dto.fixoNumero = cliente.getFixo().getNumero();
-
-        dto.celularTipo = cliente.getCelular().getTipo();
-        dto.celularDdd = cliente.getCelular().getDdd();
-        dto.celularNumero = cliente.getCelular().getNumero();
-
-        dto.outroTipo = cliente.getOutro().getTipo();
-        dto.outroDdd = cliente.getOutro().getDdd();
-        dto.outroNumero = cliente.getOutro().getNumero();
-
+        if(cliente.getOutro() != null) {
+            dto.outroTipo = cliente.getOutro().getTipo();
+            dto.outroDdd = cliente.getOutro().getDdd();
+            dto.outroNumero = cliente.getOutro().getNumero();
+        }
         dto.nomePais = cliente.getEndereco().getCidade().getEstado().getPais().getNome();
         dto.nomeEstado = cliente.getEndereco().getCidade().getEstado().getNome();
         dto.nomeCidade = cliente.getEndereco().getCidade().getNome();

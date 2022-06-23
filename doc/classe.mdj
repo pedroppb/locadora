@@ -1152,7 +1152,7 @@
 											"top": 431,
 											"width": 645.6201171875,
 											"height": 13,
-											"text": "Endereco"
+											"text": "Cliente"
 										},
 										{
 											"_type": "LabelView",
@@ -1339,7 +1339,7 @@
 											"top": 552,
 											"width": 645.6201171875,
 											"height": 13,
-											"text": "+Endereco(cep: String, rua: String, numero: String, complemento: String, bairo: String, pontoReferencia: String)",
+											"text": "+Cliente(cep: String, rua: String, numero: String, complemento: String, bairo: String, pontoReferencia: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1571,7 +1571,7 @@
 											"top": 839,
 											"width": 1061.85498046875,
 											"height": 13,
-											"text": "Funcionario"
+											"text": "Reserva"
 										},
 										{
 											"_type": "LabelView",
@@ -1711,7 +1711,7 @@
 											"top": 922,
 											"width": 1061.85498046875,
 											"height": 13,
-											"text": "+endereco: Endereco",
+											"text": "+cliente: Cliente",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1813,7 +1813,7 @@
 											"top": 1005,
 											"width": 1061.85498046875,
 											"height": 13,
-											"text": "+Funcionario(nome: String, senha: String, email: String, dataAdimissao: String, endereco, Endereco, cargo: Cargo, telefone: Telefone)",
+											"text": "+Reserva(nome: String, senha: String, email: String, dataAdimissao: String, cliente, Cliente, cargo: Cargo, telefone: Telefone)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1830,7 +1830,7 @@
 											"top": 1020,
 											"width": 1061.85498046875,
 											"height": 13,
-											"text": "+criarCliente(nome: String, senha: String, email: String, cpf: String, cnh: String, rg: String, endereco: Endereco, telefone: Telefone)",
+											"text": "+criarCliente(nome: String, senha: String, email: String, cpf: String, cnh: String, rg: String, cliente: Cliente, telefone: Telefone)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1847,7 +1847,7 @@
 											"top": 1035,
 											"width": 1061.85498046875,
 											"height": 13,
-											"text": "+criaCliente(nome: String, senha: String, cnpj: String, email: String, cpf: String, cnh: String, rg: String, nomecontato: String, emailcontato: String, endereco: Endereco, telefone: Telefone)",
+											"text": "+criaCliente(nome: String, senha: String, cnpj: String, email: String, cpf: String, cnh: String, rg: String, nomecontato: String, emailcontato: String, cliente: Cliente, telefone: Telefone)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -1934,7 +1934,7 @@
 											"top": 1080,
 											"width": 1061.85498046875,
 											"height": 13,
-											"text": "+editaFuncionario(cargo: Cargo, campo: int, novo: String)",
+											"text": "+editaReserva(cargo: Cargo, campo: int, novo: String)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3374,7 +3374,7 @@
 											"top": 189,
 											"width": 545.86669921875,
 											"height": 13,
-											"text": "+endereco: Endereco",
+											"text": "+cliente: Cliente",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3493,7 +3493,7 @@
 											"top": 287,
 											"width": 545.86669921875,
 											"height": 13,
-											"text": "+criaPessoaFisica(cpf: String, cnh: String, rg: String, endereco: Endereco)",
+											"text": "+criaPessoaFisica(cpf: String, cnh: String, rg: String, cliente: Cliente)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -3562,7 +3562,7 @@
 											"top": 347,
 											"width": 545.86669921875,
 											"height": 13,
-											"text": "+editaCadastro(endereco: Endereco)",
+											"text": "+editaCadastro(cliente: Cliente)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4383,7 +4383,7 @@
 											"top": 585,
 											"width": 703.4853515625,
 											"height": 13,
-											"text": "+endereco: Endereco",
+											"text": "+cliente: Cliente",
 											"horizontalAlignment": 0
 										}
 									],
@@ -4417,7 +4417,7 @@
 											"top": 608,
 											"width": 703.4853515625,
 											"height": 13,
-											"text": "+Loja(nome: String, email: String, horaAbertura: String, horaFechamento: String, telefone: telefone, endereco: Endereco)",
+											"text": "+Loja(nome: String, email: String, horaAbertura: String, horaFechamento: String, telefone: telefone, cliente: Cliente)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -4451,7 +4451,7 @@
 											"top": 638,
 											"width": 703.4853515625,
 											"height": 13,
-											"text": "+editaLoja(cargo: Cargo, endereco: Endereco)",
+											"text": "+editaLoja(cargo: Cargo, cliente: Cliente)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7925,7 +7925,7 @@
 											"top": 881,
 											"width": 622.5146484375,
 											"height": 13,
-											"text": "+funcionarioRetirada: Funcionario",
+											"text": "+reservaRetirada: Reserva",
 											"horizontalAlignment": 0
 										},
 										{
@@ -7976,7 +7976,7 @@
 											"top": 926,
 											"width": 622.5146484375,
 											"height": 13,
-											"text": "+funcionarioDevolucao: Funcionario",
+											"text": "+reservaDevolucao: Reserva",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8095,7 +8095,7 @@
 											"top": 1024,
 											"width": 622.5146484375,
 											"height": 13,
-											"text": "+Locacao(reserva: Reserva, funcionario: Funcionario, carro: Carro)",
+											"text": "+Locacao(reserva: Reserva, reserva: Reserva, carro: Carro)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8112,7 +8112,7 @@
 											"top": 1039,
 											"width": 622.5146484375,
 											"height": 13,
-											"text": "+locacao(cliente: Cliente, carro: Carro, LojaRetirada: Loja, dataRetirada, Datetime, funcionario: Funcionario)",
+											"text": "+locacao(cliente: Cliente, carro: Carro, LojaRetirada: Loja, dataRetirada, Datetime, reserva: Reserva)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -8129,7 +8129,7 @@
 											"top": 1054,
 											"width": 622.5146484375,
 											"height": 13,
-											"text": "+devolverCarro(LojaDevolucao: Loja, DataDevolucao: Datetime, funcionario: Funcionario)",
+											"text": "+devolverCarro(LojaDevolucao: Loja, DataDevolucao: Datetime, reserva: Reserva)",
 											"horizontalAlignment": 0
 										},
 										{
@@ -12666,7 +12666,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Endereco",
+					"name": "Cliente",
 					"ownedElements": [
 						{
 							"_type": "UMLGeneralization",
@@ -12745,7 +12745,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/BCEByVKG8e4="
 							},
-							"name": "Endereco",
+							"name": "Cliente",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -12858,7 +12858,7 @@
 					"_parent": {
 						"$ref": "AAAAAAFF+qBWK6M3Z8Y="
 					},
-					"name": "Funcionario",
+					"name": "Reserva",
 					"ownedElements": [
 						{
 							"_type": "UMLAssociation",
@@ -13016,8 +13016,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF/BCViQlNuJiY="
 							},
-							"name": "endereco",
-							"type": "Endereco"
+							"name": "cliente",
+							"type": "Cliente"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -13063,7 +13063,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/BCViQlNuJiY="
 							},
-							"name": "Funcionario",
+							"name": "Reserva",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -13107,7 +13107,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/B7Seb8G9dsQ="
 									},
-									"name": "endereco",
+									"name": "cliente",
 									"type": ""
 								},
 								{
@@ -13116,7 +13116,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/B7Seb8G9dsQ="
 									},
-									"name": "Endereco",
+									"name": "Cliente",
 									"type": ""
 								},
 								{
@@ -13209,7 +13209,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/B7Slc8IsBtI="
 									},
-									"name": "endereco",
+									"name": "cliente",
 									"type": {
 										"$ref": "AAAAAAF/BCEByVKG8e4="
 									}
@@ -13322,8 +13322,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF/B7Sn2cKbkio="
 									},
-									"name": "endereco",
-									"type": "Endereco"
+									"name": "cliente",
+									"type": "Cliente"
 								},
 								{
 									"_type": "UMLParameter",
@@ -13425,7 +13425,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/BCViQlNuJiY="
 							},
-							"name": "editaFuncionario",
+							"name": "editaReserva",
 							"parameters": [
 								{
 									"_type": "UMLParameter",
@@ -13779,8 +13779,8 @@
 							"_parent": {
 								"$ref": "AAAAAAF/BEBzQl5XFas="
 							},
-							"name": "endereco",
-							"type": "Endereco"
+							"name": "cliente",
+							"type": "Cliente"
 						},
 						{
 							"_type": "UMLAttribute",
@@ -13904,8 +13904,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF/B1VL5nMz5TA="
 									},
-									"name": "endereco",
-									"type": "Endereco"
+									"name": "cliente",
+									"type": "Cliente"
 								}
 							]
 						},
@@ -14052,8 +14052,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF/B1VZMnR3zKQ="
 									},
-									"name": "endereco",
-									"type": "Endereco"
+									"name": "cliente",
+									"type": "Cliente"
 								}
 							]
 						},
@@ -14215,7 +14215,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/B19qvYRWyWo="
 							},
-							"name": "endereco",
+							"name": "cliente",
 							"type": {
 								"$ref": "AAAAAAF/BCEByVKG8e4="
 							}
@@ -14281,7 +14281,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/B2s2LJUVArI="
 									},
-									"name": "endereco",
+									"name": "cliente",
 									"type": {
 										"$ref": "AAAAAAF/BCEByVKG8e4="
 									}
@@ -14348,8 +14348,8 @@
 									"_parent": {
 										"$ref": "AAAAAAF/B2LRlo4OEOI="
 									},
-									"name": "endereco",
-									"type": "Endereco"
+									"name": "cliente",
+									"type": "Cliente"
 								}
 							]
 						},
@@ -15253,7 +15253,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/Cai0eKIJ4qg="
 							},
-							"name": "funcionarioRetirada",
+							"name": "reservaRetirada",
 							"type": {
 								"$ref": "AAAAAAF/BCViQlNuJiY="
 							}
@@ -15284,7 +15284,7 @@
 							"_parent": {
 								"$ref": "AAAAAAF/Cai0eKIJ4qg="
 							},
-							"name": "funcionarioDevolucao",
+							"name": "reservaDevolucao",
 							"type": {
 								"$ref": "AAAAAAF/BCViQlNuJiY="
 							}
@@ -15363,7 +15363,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/CcXGY1hZfbg="
 									},
-									"name": "funcionario",
+									"name": "reserva",
 									"type": {
 										"$ref": "AAAAAAF/BCViQlNuJiY="
 									}
@@ -15446,7 +15446,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/CcXNdlmpvAA="
 									},
-									"name": "funcionario",
+									"name": "reserva",
 									"type": {
 										"$ref": "AAAAAAF/BCViQlNuJiY="
 									}
@@ -15487,7 +15487,7 @@
 									"_parent": {
 										"$ref": "AAAAAAF/CcXQQlr54YM="
 									},
-									"name": "funcionario",
+									"name": "reserva",
 									"type": {
 										"$ref": "AAAAAAF/BCViQlNuJiY="
 									}

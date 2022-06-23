@@ -4,12 +4,10 @@ import com.example.locadora.api.dto.CategoriaDTO;
 import com.example.locadora.model.entity.carro.Categoria;
 import com.example.locadora.service.carro.CategoriaService;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
@@ -35,5 +33,49 @@ public class CategoriaController {
             return new ResponseEntity("Categoria não encontrado", HttpStatus.NOT_FOUND);
         }
         return ResponseEntity.ok(categoria.map(CategoriaDTO::create));
+    }
+    @PostMapping()
+    public ResponseEntity post(CategoriaDTO dto) {
+        try {
+            Categoria categoria = converter(dto);
+            categoria = service.salvar(categoria);
+            return new ResponseEntity(categoria, HttpStatus.CREATED);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity atualizar(@PathVariable("id") Long id, CategoriaDTO dto) {
+        if (!service.getCategoriaById(id).isPresent()) {
+            return new ResponseEntity("Categoria não encontrado", HttpStatus.NOT_FOUND);
+        }
+        try {
+            Categoria categoria = converter(dto);
+            categoria.setId(id);
+            service.salvar(categoria);
+            return ResponseEntity.ok(categoria);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity excluir(@PathVariable("id") Long id) {
+        Optional<Categoria> categoria = service.getCategoriaById(id);
+        if (!categoria.isPresent()) {
+            return new ResponseEntity("Categoria não encontrado", HttpStatus.NOT_FOUND);
+        }
+        try {
+            service.excluir(categoria.get());
+            return new ResponseEntity(HttpStatus.NO_CONTENT);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
+    }
+
+    public Categoria converter(CategoriaDTO dto) {
+        ModelMapper modelMapper = new ModelMapper();
+        return modelMapper.map(dto, Categoria.class);
     }
 }

@@ -17,8 +17,6 @@ public class CategoriaDTO {
 
     public static CategoriaDTO create(Categoria categoria){
         ModelMapper modelMapper = new ModelMapper();
-        CategoriaDTO dto = modelMapper.map(categoria, CategoriaDTO.class);
-
-        return dto;
+        return modelMapper.map(categoria, CategoriaDTO.class);
     }
 }

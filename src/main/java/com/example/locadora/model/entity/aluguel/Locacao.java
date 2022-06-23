@@ -7,6 +7,7 @@ import com.example.locadora.model.entity.carro.Carro;
 import com.example.locadora.model.entity.carro.TipoAluguel;
 import com.example.locadora.model.entity.pessoa.Cliente;
 import com.example.locadora.model.entity.pessoa.Funcionario;
+
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,7 @@ public class Locacao {
     private Loja lojaRetirada;
     private LocalDateTime dataHoraRetirada;
     @ManyToOne
-    private Funcionario funcionarioRetirada;
+    private Funcionario  funcionarioRetirada;
     @ManyToOne
     private Loja lojaProgramada;
     private LocalDateTime dataHoraProgramada;

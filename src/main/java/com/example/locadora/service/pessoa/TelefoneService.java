@@ -48,7 +48,7 @@ public class TelefoneService {
         }
         if(telefone.getDdd().trim().equals("") || telefone.getDdd() == null )
         {
-            throw new NullPointerException("Telefone com Tipo inválido");
+            throw new NullPointerException("Telefone com DDD inválido");
         }
         if (telefone.getId() == 0 || telefone.getId() == null  ) {
             throw new NullPointerException("Telefone inválido");

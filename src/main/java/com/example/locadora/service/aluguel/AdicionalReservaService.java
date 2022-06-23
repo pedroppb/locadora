@@ -1,4 +1,4 @@
-package com.example.locadora.service.tipoExtra;
+package com.example.locadora.service.aluguel;
 
         import com.example.locadora.model.entity.aluguel.AdicionalReserva;
         import com.example.locadora.model.repository.aluguel.AdicionalReservaRepository;

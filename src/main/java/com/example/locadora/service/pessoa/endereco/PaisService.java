@@ -39,8 +39,7 @@ public class PaisService {
 
     public void validar(Pais pais) {
 
-        if(pais.getNome().trim().equals("") || pais.getNome() == null )
-        {
+        if(pais.getNome().trim().equals("") || pais.getNome() == null ) {
             throw new NullPointerException("Pais com Nome inválido");
         }
 

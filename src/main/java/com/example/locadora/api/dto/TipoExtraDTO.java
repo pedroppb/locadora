@@ -1,11 +1,12 @@
 package com.example.locadora.api.dto;
 
 import com.example.locadora.model.entity.aluguel.extra.TipoExtra;
+
 import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.modelmapper.ModelMapper;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

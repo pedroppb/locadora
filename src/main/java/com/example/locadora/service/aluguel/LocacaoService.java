@@ -56,7 +56,7 @@ public class LocacaoService {
         }
         if(locacao.getFuncionarioRetirada() == null || locacao.getFuncionarioRetirada().getId() == null || locacao.getFuncionarioRetirada().getId() == 0 )
         {
-            throw new NullPointerException("Locacao com LojaRetirada inválido");
+            throw new NullPointerException("Locacao com FuncionarioRetirada inválido");
         }
         if(locacao.getLojaProgramada() == null || locacao.getLojaProgramada().getId() == null || locacao.getLojaProgramada().getId() == 0 )
         {

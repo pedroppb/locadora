@@ -68,7 +68,7 @@ public class ClienteService {
         {
             throw new NullPointerException("Cliente com cnh inválida");
         }
-        if(cliente.getCnhValidade().equals(null) || cliente.getCnhValidade() == null )
+        if(cliente.getCnhValidade() == null )
         {
             throw new NullPointerException("Cliente com Validade da CNH inválido");
         }
@@ -85,7 +85,7 @@ public class ClienteService {
         {
             throw new NullPointerException("Cliente com Tipo inválido");
         }
-        if(cliente.getTipo() == 0){
+        if(cliente.getTipo() == 1){
             if(cliente.getCnpj().trim().equals("") || cliente.getCnpj() == null )
             {
                 throw new NullPointerException("Cliente com cnpj inválido");
