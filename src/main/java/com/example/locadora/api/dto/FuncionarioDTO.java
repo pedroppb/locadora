@@ -65,5 +65,6 @@ public class FuncionarioDTO {
         dto.celularNumero = funcionario.getCelular().getNumero();
 
         return dto;
+//teste
     }
 }
