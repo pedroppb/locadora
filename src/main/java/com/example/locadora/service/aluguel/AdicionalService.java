@@ -47,9 +47,5 @@ public class AdicionalService {
         {
             throw new NullPointerException("Adicional com valor inválido");
         }
-
-        if (adicional.getId() == 0 || adicional.getId() == null  ) {
-            throw new NullPointerException("Adicional inválido");
-        }
     }
 }

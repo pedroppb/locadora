@@ -75,9 +75,5 @@ public class FuncionarioService {
         {
             throw new NullPointerException("Funcionario com Cargo inválido");
         }
-
-        if (funcionario.getId() == 0 || funcionario.getId() == null  ) {
-            throw new NullPointerException("funcionario inválido");
-        }
     }
 }

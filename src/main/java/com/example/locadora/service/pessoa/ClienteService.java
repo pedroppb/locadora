@@ -99,9 +99,5 @@ public class ClienteService {
                 throw new NullPointerException("Cliente com emailContato inválido");
             }
         }
-
-        if (cliente.getId() == 0 || cliente.getId() == null  ) {
-            throw new NullPointerException("cliente inválido");
-        }
     }
 }

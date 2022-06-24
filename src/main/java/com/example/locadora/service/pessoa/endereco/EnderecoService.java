@@ -55,9 +55,5 @@ public class EnderecoService {
         {
             throw new NullPointerException("Endereco com Cidade inválido");
         }
-
-        if (endereco.getId() == 0 || endereco.getId() == null  ) {
-            throw new NullPointerException("Endereco inválido");
-        }
     }
 }

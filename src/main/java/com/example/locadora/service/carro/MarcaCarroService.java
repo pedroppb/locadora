@@ -43,9 +43,5 @@ public class MarcaCarroService {
         {
             throw new NullPointerException("MarcaCarro com Nome inválido");
         }
-
-        if (marcaCarro.getId() == 0 || marcaCarro.getId() == null  ) {
-            throw new NullPointerException("MarcaCarro inválido");
-        }
     }
 }

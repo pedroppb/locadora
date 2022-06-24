@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/TiposAluguel")
+@RequestMapping("/api/v1/tiposAluguel")
 @RequiredArgsConstructor
 
 public class TipoAluguelController {

@@ -79,8 +79,5 @@ public class LocacaoService {
         {
             throw new NullPointerException("Locacao com valor inválido");
         }
-        if (locacao.getId() == 0 || locacao.getId() == null  ) {
-            throw new NullPointerException("Locacao inválido");
-        }
     }
 }

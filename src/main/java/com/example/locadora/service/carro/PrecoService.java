@@ -48,8 +48,5 @@ public class PrecoService {
         {
             throw new NullPointerException("Preco com TipoAluguel inválido");
         }
-        if (preco.getId() == 0 || preco.getId() == null  ) {
-            throw new NullPointerException("Preco inválido");
-        }
     }
 }

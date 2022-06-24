@@ -61,8 +61,5 @@ public class LojaService {
         {
             throw new NullPointerException("Loja com Telefone inválido");
         }
-        if (loja.getId() == 0 || loja.getId() == null  ) {
-            throw new NullPointerException("Loja inválido");
-        }
     }
 }

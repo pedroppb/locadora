@@ -46,8 +46,5 @@ public class TipoExtraService {
         {
             throw new NullPointerException("TipoExtra com Descricao inválido");
         }
-        if (tipoExtra.getId() == 0 || tipoExtra.getId() == null  ) {
-            throw new NullPointerException("TipoExtra inválido");
-        }
     }
 }

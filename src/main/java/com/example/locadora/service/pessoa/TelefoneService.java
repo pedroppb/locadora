@@ -50,8 +50,5 @@ public class TelefoneService {
         {
             throw new NullPointerException("Telefone com DDD inválido");
         }
-        if (telefone.getId() == 0 || telefone.getId() == null  ) {
-            throw new NullPointerException("Telefone inválido");
-        }
     }
 }

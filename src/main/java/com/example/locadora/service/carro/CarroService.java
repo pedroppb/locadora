@@ -70,8 +70,5 @@ public class CarroService {
         {
             throw new NullPointerException("Carro com Loja inválido");
         }
-        if (carro.getId() == 0 || carro.getId() == null  ) {
-            throw new NullPointerException("Carro inválido");
-        }
     }
 }

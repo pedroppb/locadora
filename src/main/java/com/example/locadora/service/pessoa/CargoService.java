@@ -48,9 +48,5 @@ public class CargoService {
         {
             throw new NullPointerException("Cargo com Salario inválida");
         }
-
-        if (cargo.getId() == 0 || cargo.getId() == null  ) {
-            throw new NullPointerException("Cargo inválido");
-        }
     }
 }

@@ -47,9 +47,5 @@ public class CategoriaService {
         {
             throw new NullPointerException("Categoria com Descricao inválido");
         }
-
-        if (categoria.getId() == 0 || categoria.getId() == null  ) {
-            throw new NullPointerException("Categoria inválido");
-        }
-    }
+   }
 }

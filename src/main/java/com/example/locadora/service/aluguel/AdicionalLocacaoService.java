@@ -51,9 +51,5 @@ public class AdicionalLocacaoService {
         {
             throw new NullPointerException("AdicionalLocacao com Valor inválido");
         }
-
-        if (adicionalLocacao.getId() == 0 || adicionalLocacao.getId() == null  ) {
-            throw new NullPointerException("AdicionalLocacao inválido");
-        }
     }
 }

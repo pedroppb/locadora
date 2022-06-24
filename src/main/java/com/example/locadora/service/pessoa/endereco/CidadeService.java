@@ -47,9 +47,5 @@ public class CidadeService {
         {
             throw new NullPointerException("Cidade com Estado inválido");
         }
-
-        if (cidade.getId() == 0 || cidade.getId() == null  ) {
-            throw new NullPointerException("Cidade inválido");
-        }
     }
 }

@@ -47,9 +47,5 @@ public class TipoAluguelService {
         {
             throw new NullPointerException("TipoAluguel com Descricao inválido");
         }
-
-        if (tipoAluguel.getId() == 0 || tipoAluguel.getId() == null  ) {
-            throw new NullPointerException("TipoAluguel inválido");
-        }
     }
 }

@@ -47,8 +47,5 @@ public class ModeloService {
         {
             throw new NullPointerException("Modelo com Marca inválido");
         }
-        if (modelo.getId() == 0 || modelo.getId() == null  ) {
-            throw new NullPointerException("Modelo inválido");
-        }
     }
 }

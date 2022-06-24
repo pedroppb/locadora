@@ -50,8 +50,5 @@ public class ExtraService {
         {
             throw new NullPointerException("Extra com DataVencimento inválido");
         }
-        if (extra.getId() == 0 || extra.getId() == null  ) {
-            throw new NullPointerException("Extra inválido");
-        }
     }
 }

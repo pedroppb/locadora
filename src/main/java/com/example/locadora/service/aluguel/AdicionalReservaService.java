@@ -51,9 +51,5 @@ public class AdicionalReservaService {
         {
             throw new NullPointerException("AdicionalReserva com valor inválido");
         }
-
-        if (adicionalReserva.getId() == 0 || adicionalReserva.getId() == null  ) {
-            throw new NullPointerException("AdicionalReserva inválido");
-        }
     }
 }

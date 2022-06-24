@@ -47,9 +47,5 @@ public class EstadoService {
         {
             throw new NullPointerException("Estado com Pais inválido");
         }
-
-        if (estado.getId() == 0 || estado.getId() == null  ) {
-            throw new NullPointerException("Estado inválido");
-        }
     }
 }

@@ -42,9 +42,5 @@ public class PaisService {
         if(pais.getNome().trim().equals("") || pais.getNome() == null ) {
             throw new NullPointerException("Pais com Nome inválido");
         }
-
-        if (pais.getId() == 0 || pais.getId() == null  ) {
-            throw new NullPointerException("Pais inválido");
-        }
     }
 }

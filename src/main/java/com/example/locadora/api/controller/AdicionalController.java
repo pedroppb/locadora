@@ -15,7 +15,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/adicional")
+@RequestMapping("/api/v1/adicionais")
 @RequiredArgsConstructor
 
 public class AdicionalController {

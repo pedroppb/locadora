@@ -70,8 +70,5 @@ public class ReservaService {
         {
             throw new NullPointerException("Reserva com valor inválido");
         }
-        if (reserva.getId() == 0 || reserva.getId() == null  ) {
-            throw new NullPointerException("Reserva inválido");
-        }
     }
 }
