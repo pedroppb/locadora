@@ -25,24 +25,11 @@ public class ClienteDTO {
     private LocalDate cnhValidade;
     private String email;
 
-    private String fixoTipo;
-    private String fixoDdd;
-    private String fixoNumero;
+    private Long idFixo;
+    private Long idCelular;
+    private Long idOutro;
 
-    private String celularTipo;
-    private String celularDdd;
-    private String celularNumero;
-
-    private String outroTipo;
-    private String outroDdd;
-    private String outroNumero;
-
-    private String nomePais;
-    private String nomeEstado;
-    private String nomeCidade;
-    private String cep;
-    private String rua;
-    private String bairro;
+    private Long idEndereco;
     private String numero;
     private String complemento;
     private String pontoReferencia;
@@ -50,28 +37,6 @@ public class ClienteDTO {
     public static ClienteDTO create(Cliente cliente){
         ModelMapper modelMapper = new ModelMapper();
         ClienteDTO dto = modelMapper.map(cliente, ClienteDTO.class);
-        if(cliente.getFixo() != null) {
-            dto.fixoTipo = cliente.getFixo().getTipo();
-            dto.fixoDdd = cliente.getFixo().getDdd();
-            dto.fixoNumero = cliente.getFixo().getNumero();
-        }
-        if(cliente.getCelular() != null) {
-            dto.celularTipo = cliente.getCelular().getTipo();
-            dto.celularDdd = cliente.getCelular().getDdd();
-            dto.celularNumero = cliente.getCelular().getNumero();
-        }
-
-        if(cliente.getOutro() != null) {
-            dto.outroTipo = cliente.getOutro().getTipo();
-            dto.outroDdd = cliente.getOutro().getDdd();
-            dto.outroNumero = cliente.getOutro().getNumero();
-        }
-        dto.nomePais = cliente.getEndereco().getCidade().getEstado().getPais().getNome();
-        dto.nomeEstado = cliente.getEndereco().getCidade().getEstado().getNome();
-        dto.nomeCidade = cliente.getEndereco().getCidade().getNome();
-        dto.cep = cliente.getEndereco().getCep();
-        dto.rua = cliente.getEndereco().getRua();
-        dto.bairro = cliente.getEndereco().getBairro();
 
         return dto;
     }

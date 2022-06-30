@@ -6,9 +6,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
-import java.time.LocalDate;
-import java.time.LocalTime;
-
+import java.time.LocalDateTime;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -18,9 +16,9 @@ public class ReservaDTO {
     private Long id;
     private Long idCliente;
     private Long idLojaRetirada;
+    private LocalDateTime dataHoraProgramada;
     private Long idLojaProgramada;
-    private LocalDate dataHoraProgramada;
-    private LocalTime horaHoraRetirada;
+    private LocalDateTime dataHoraRetirada;
     private Long idCategoria;
     private Long idTipoAluguel;
     private Float valorReserva;

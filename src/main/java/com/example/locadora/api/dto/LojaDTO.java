@@ -16,35 +16,15 @@ public class LojaDTO {
     private String horaAbertura;
     private String horaFechamento;
 
-    private String fixoTipo;
-    private String fixoDdd;
-    private String fixoNumero;
+    private Long idTelefone;
 
-    private String nomePais;
-    private String nomeEstado;
-    private String nomeCidade;
-    private String cep;
-    private String rua;
-    private String bairro;
+    private Long idEndereco;
     private String numero;
     private String complemento;
     private String pontoReferencia;
 
     public static LojaDTO create(Loja loja){
         ModelMapper modelMapper = new ModelMapper();
-        LojaDTO dto = modelMapper.map(loja, LojaDTO.class);
-
-        dto.fixoTipo = loja.getTelefone().getTipo();
-        dto.fixoDdd = loja.getTelefone().getDdd();
-        dto.fixoNumero = loja.getTelefone().getNumero();
-
-        dto.nomePais = loja.getEndereco().getCidade().getEstado().getPais().getNome();
-        dto.nomeEstado = loja.getEndereco().getCidade().getEstado().getNome();
-        dto.nomeCidade = loja.getEndereco().getCidade().getNome();
-        dto.cep = loja.getEndereco().getCep();
-        dto.rua = loja.getEndereco().getRua();
-        dto.bairro = loja.getEndereco().getBairro();
-
-        return dto;
+        return modelMapper.map(loja, LojaDTO.class);
     }
 }

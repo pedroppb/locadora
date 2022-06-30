@@ -2,6 +2,7 @@ package com.example.locadora.api.controller;
 
 
 import com.example.locadora.model.entity.aluguel.Loja;
+import com.example.locadora.model.entity.carro.MarcaCarro;
 import com.example.locadora.service.aluguel.LojaService;
 import com.example.locadora.api.dto.LojaDTO;
 
@@ -52,7 +53,6 @@ public class LojaController {
     public ResponseEntity post(LojaDTO dto) {
         try {
             Loja loja = converter(dto);
-            loja= salvar(loja);
             loja = service.salvar(loja);
             return new ResponseEntity(loja, HttpStatus.CREATED);
         } catch (RuntimeException e) {
@@ -67,7 +67,6 @@ public class LojaController {
         try {
             Loja loja = converter(dto);
             loja.setId(id);
-            loja= salvar(loja);
             service.salvar(loja);
             return ResponseEntity.ok(loja);
         } catch (RuntimeException e) {
@@ -92,27 +91,24 @@ public class LojaController {
     public Loja converter(LojaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Loja loja = modelMapper.map(dto, Loja.class);
-        Telefone telefone = new Telefone();
-        telefone.setTipo(dto.getFixoTipo());
-        telefone.setDdd(dto.getFixoDdd());
-        telefone.setNumero(dto.getFixoNumero());
-        loja.setTelefone(telefone);
-        return loja;
-    }
-    public Loja salvar(Loja loja) {
-        Pais pais = paisService.salvar(loja.getEndereco().getCidade().getEstado().getPais());
-        Estado estado = estadoService.salvar(loja.getEndereco().getCidade().getEstado());
-        estado.setPais(pais);
-        Cidade cidade = cidadeService.salvar(loja.getEndereco().getCidade());
-        cidade.setEstado(estado);
-        Endereco endereco = enderecoService.salvar(loja.getEndereco());
-        endereco.setCidade(cidade);
-        loja.setEndereco(endereco);
-        if(loja.getTelefone() != null){
-            Telefone fixo = telefoneService.salvar(loja.getTelefone());
-            loja.setTelefone(fixo);
+
+        if (dto.getIdEndereco() != null) {
+            Optional<Endereco> endereco = enderecoService.getEnderecoById(dto.getIdEndereco());
+            if (!endereco.isPresent()) {
+                loja.setEndereco(null);
+            } else {
+                loja.setEndereco(endereco.get());
+            }
         }
 
+        if (dto.getIdTelefone() != null) {
+            Optional<Telefone> telefone = telefoneService.getTelefoneById(dto.getIdTelefone());
+            if (!telefone.isPresent()) {
+                loja.setTelefone(null);
+            } else {
+                loja.setTelefone(telefone.get());
+            }
+        }
         return loja;
     }
 }

@@ -13,8 +13,8 @@ import com.example.locadora.service.aluguel.LojaService;
 import com.example.locadora.model.entity.pessoa.Telefone;
 import com.example.locadora.service.pessoa.TelefoneService;
 
-import com.example.locadora.model.entity.pessoa.endereco.*;
-import com.example.locadora.service.pessoa.endereco.*;
+import com.example.locadora.model.entity.pessoa.endereco.Endereco;
+import com.example.locadora.service.pessoa.endereco.EnderecoService;
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -33,9 +33,6 @@ import java.util.stream.Collectors;
 public class FuncionarioController {
     private final FuncionarioService service;
     private final EnderecoService enderecoService;
-    private final CidadeService cidadeService;
-    private final EstadoService estadoService;
-    private final PaisService paisService;
     private final TelefoneService telefoneService;
     private final LojaService lojaService;
     private final CargoService cargoService;
@@ -59,7 +56,6 @@ public class FuncionarioController {
     public ResponseEntity post(FuncionarioDTO dto) {
         try {
             Funcionario funcionario = converter(dto);
-            funcionario = salvar(funcionario);
             funcionario = service.salvar(funcionario);
             return new ResponseEntity(funcionario, HttpStatus.CREATED);
         } catch (RuntimeException  e) {
@@ -75,7 +71,6 @@ public class FuncionarioController {
         try {
             Funcionario funcionario = converter(dto);
             funcionario.setId(id);
-            funcionario = salvar(funcionario);
             service.salvar(funcionario);
             return ResponseEntity.ok(funcionario);
         } catch (RuntimeException  e) {
@@ -101,36 +96,30 @@ public class FuncionarioController {
         ModelMapper modelMapper = new ModelMapper();
         Funcionario funcionario = modelMapper.map(dto, Funcionario.class);
 
-        Pais pais = new Pais();
-        pais.setNome(dto.getNomePais());
-        Estado estado = new Estado();
-        estado.setNome(dto.getNomeEstado());
-        estado.setPais(pais);
-        Cidade cidade = new Cidade();
-        cidade.setNome(dto.getNomeCidade());
-        cidade.setEstado(estado);
-        Endereco endereco = modelMapper.map(dto, Endereco.class);
-        endereco.setCidade(cidade);
-        funcionario.setEndereco(endereco);
-
-        Telefone fixo = new Telefone();
-        fixo.setTipo(dto.getFixoTipo());
-        fixo.setDdd(dto.getFixoDdd());
-        fixo.setNumero(dto.getFixoNumero());
-        funcionario.setFixo(fixo);
-
-        Telefone celular = new Telefone();
-        celular.setTipo(dto.getCelularTipo());
-        celular.setDdd(dto.getCelularDdd());
-        celular.setNumero(dto.getCelularNumero());
-        funcionario.setCelular(celular);
-
-        if (dto.getIdLoja() != null) {
-            Optional<Loja> loja = lojaService.getLojaById(dto.getIdLoja());
-            if (!loja.isPresent()) {
-                funcionario.setLoja(null);
+        if (dto.getIdEndereco() != null) {
+            Optional<Endereco> endereco = enderecoService.getEnderecoById(dto.getIdEndereco());
+            if (!endereco.isPresent()) {
+                funcionario.setEndereco(null);
             } else {
-                funcionario.setLoja(loja.get());
+                funcionario.setEndereco(endereco.get());
+            }
+        }
+
+        if (dto.getIdFixo() != null) {
+            Optional<Telefone> telefone = telefoneService.getTelefoneById(dto.getIdFixo());
+            if (!telefone.isPresent()) {
+                funcionario.setFixo(null);
+            } else {
+                funcionario.setFixo(telefone.get());
+            }
+        }
+
+        if (dto.getIdCelular() != null) {
+            Optional<Telefone> telefone = telefoneService.getTelefoneById(dto.getIdCelular());
+            if (!telefone.isPresent()) {
+                funcionario.setCelular(null);
+            } else {
+                funcionario.setCelular(telefone.get());
             }
         }
 
@@ -143,25 +132,6 @@ public class FuncionarioController {
             }
         }
 
-        return funcionario;
-    }
-    public Funcionario salvar(Funcionario funcionario) {
-        Pais pais = paisService.salvar(funcionario.getEndereco().getCidade().getEstado().getPais());
-        Estado estado = estadoService.salvar(funcionario.getEndereco().getCidade().getEstado());
-        estado.setPais(pais);
-        Cidade cidade = cidadeService.salvar(funcionario.getEndereco().getCidade());
-        cidade.setEstado(estado);
-        Endereco endereco = enderecoService.salvar(funcionario.getEndereco());
-        endereco.setCidade(cidade);
-        funcionario.setEndereco(endereco);
-        if(funcionario.getFixo() != null){
-            Telefone fixo = telefoneService.salvar(funcionario.getFixo());
-            funcionario.setFixo(fixo);
-        }
-        if(funcionario.getCelular() != null){
-            Telefone celular = telefoneService.salvar(funcionario.getCelular());
-            funcionario.setCelular(celular);
-        }
         return funcionario;
     }
 }
