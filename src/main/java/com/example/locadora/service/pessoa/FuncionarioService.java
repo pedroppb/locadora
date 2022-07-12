@@ -43,10 +43,6 @@ public class FuncionarioService {
         {
             throw new NullPointerException("Funcionario com Nome inválido");
         }
-        if(funcionario.getSenha().trim().equals("") || funcionario.getSenha() == null )
-        {
-            throw new NullPointerException("Funcionario com Senha inválida");
-        }
         if(funcionario.getCpf().trim().equals("") || funcionario.getCpf() == null )
         {
             throw new NullPointerException("Funcionario com Cpf inválido");

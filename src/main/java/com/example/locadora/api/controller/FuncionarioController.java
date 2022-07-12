@@ -131,7 +131,14 @@ public class FuncionarioController {
                 funcionario.setCargo(cargo.get());
             }
         }
-
+        if (dto.getIdLoja() != null) {
+            Optional<Loja> loja = lojaService.getLojaById(dto.getIdLoja());
+            if (!loja.isPresent()) {
+                funcionario.setLoja(null);
+            } else {
+                funcionario.setLoja(loja.get());
+            }
+        }
         return funcionario;
     }
 }

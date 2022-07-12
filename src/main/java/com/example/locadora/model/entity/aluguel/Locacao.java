@@ -51,7 +51,7 @@ public class Locacao {
     private float valor;
 
     @ManyToMany
-    @JoinTable(name = "extra_locacao",
+    @JoinTable(name = "locacao_extra",
             joinColumns = @JoinColumn(name = "Locacao_id"),
             inverseJoinColumns = @JoinColumn(name = "Extra_id"))
     private List<Extra> extras;

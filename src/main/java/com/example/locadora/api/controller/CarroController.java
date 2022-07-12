@@ -92,7 +92,7 @@ public class CarroController {
             if (!modelo.isPresent()) {
                 carro.setModelo(null);
             } else {
-                carro.setModelo(carro.getModelo());
+                carro.setModelo(modelo.get());
             }
         }
         if (dto.getIdCategoria() != null) {

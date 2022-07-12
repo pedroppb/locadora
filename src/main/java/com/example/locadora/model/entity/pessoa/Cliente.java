@@ -21,7 +21,6 @@ public class Cliente {
     private Long id;
 
     private String nome;
-    private String senha;
     private Integer tipo;
     private String cnpj;
     private String nomeContato;
@@ -43,9 +42,10 @@ public class Cliente {
     private String complemento;
     private String pontoReferencia;
 
-    @OneToMany (mappedBy = "cliente")
+    /*@OneToMany (mappedBy = "cliente")
     private List<Locacao> historicoLocacao;
 
     @OneToMany (mappedBy = "cliente")
     private List<Reserva> HistoricoReserva;
+     */
 }

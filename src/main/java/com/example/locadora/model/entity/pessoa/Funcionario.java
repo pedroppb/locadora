@@ -19,7 +19,6 @@ public class Funcionario {
     private Long id;
 
     private String nome;
-    private String senha;
     private String cpf;
     private String rg;
     private String email;

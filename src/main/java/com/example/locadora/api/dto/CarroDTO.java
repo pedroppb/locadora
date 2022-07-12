@@ -7,7 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -24,7 +24,7 @@ public class CarroDTO {
     private float odometro;
     private Integer estado;
     private float odometroUltimaManutencao;
-    private LocalDate ultimaManutencao;
+    private LocalDateTime ultimaManutencao;
 
     public static CarroDTO create(Carro carro){
         ModelMapper modelMapper = new ModelMapper();

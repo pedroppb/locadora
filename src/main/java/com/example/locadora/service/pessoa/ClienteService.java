@@ -43,10 +43,6 @@ public class ClienteService {
         {
             throw new NullPointerException("Cliente com Nome inválido");
         }
-        if(cliente.getSenha().trim().equals("") || cliente.getSenha() == null )
-        {
-            throw new NullPointerException("Cliente com Senha inválido");
-        }
         if(cliente.getCpf().trim().equals("") || cliente.getCpf() == null )
         {
             throw new NullPointerException("Cliente com Cpf inválido");
@@ -72,8 +68,6 @@ public class ClienteService {
         {
             throw new NullPointerException("Cliente com Validade da CNH inválido");
         }
-
-
         if(cliente.getCelular() == null || cliente.getCelular().getId() == null || cliente.getCelular().getId() == 0 )
         {
             throw new NullPointerException("Cliente com Celular inválido");

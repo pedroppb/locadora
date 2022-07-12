@@ -92,7 +92,7 @@ public class ClienteController {
             if (!endereco.isPresent()) {
                 cliente.setEndereco(null);
             } else {
-                cliente.setEndereco(cliente.getEndereco());
+                cliente.setEndereco(endereco.get());
             }
         }
         if (dto.getIdFixo() != null) {

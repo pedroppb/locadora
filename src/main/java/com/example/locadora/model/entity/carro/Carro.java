@@ -5,7 +5,7 @@ import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import javax.persistence.*;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Entity
 @Data
@@ -29,6 +29,6 @@ public class Carro {
     private float odometro;
     private Integer estado;
     private float odometroUltimaManutencao;
-    private LocalDate ultimaManutencao;
+    private LocalDateTime ultimaManutencao;
 }
 

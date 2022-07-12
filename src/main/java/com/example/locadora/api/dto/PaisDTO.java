@@ -15,8 +15,8 @@ public class PaisDTO {
     private Long id;
     private String nome;
 
-    public static ModeloDTO create(Pais pais){
+    public static PaisDTO create(Pais pais){
         ModelMapper modelMapper = new ModelMapper();
-        return modelMapper.map(pais, ModeloDTO.class);
+        return modelMapper.map(pais, PaisDTO.class);
     }
 }

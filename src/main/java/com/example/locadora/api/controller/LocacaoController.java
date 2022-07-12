@@ -107,14 +107,43 @@ public class LocacaoController {
                 locacao.setReserva(null);
             } else {
                 locacao.setReserva(reserva.get());
+                locacao.setCliente(reserva.get().getCliente());
+                locacao.setLojaRetirada(reserva.get().getLojaRetirada());
+                locacao.setLojaProgramada(reserva.get().getLojaProgramada());
+                locacao.setTipoAluguel(reserva.get().getTipoAluguel());
             }
-        }
-        if (dto.getIdCliente() != null) {
-            Optional<Cliente> cliente = clienteService.getClienteById(dto.getIdCliente());
-            if (!cliente.isPresent()) {
-                locacao.setCliente(null);
-            } else {
-                locacao.setCliente(cliente.get());
+        }else{
+            if (dto.getIdCliente() != null) {
+                Optional<Cliente> cliente = clienteService.getClienteById(dto.getIdCliente());
+                if (!cliente.isPresent()) {
+                    locacao.setCliente(null);
+                } else {
+                    locacao.setCliente(cliente.get());
+                }
+            }
+            if (dto.getIdLojaRetirada() != null) {
+                Optional<Loja> loja = lojaService.getLojaById(dto.getIdLojaRetirada());
+                if (!loja.isPresent()) {
+                    locacao.setLojaRetirada(null);
+                } else {
+                    locacao.setLojaRetirada(loja.get());
+                }
+            }
+            if (dto.getIdLojaProgramada() != null) {
+                Optional<Loja> loja = lojaService.getLojaById(dto.getIdLojaProgramada());
+                if (!loja.isPresent()) {
+                    locacao.setLojaProgramada(null);
+                } else {
+                    locacao.setLojaProgramada(loja.get());
+                }
+            }
+            if (dto.getIdTipoAluguel() != null) {
+                Optional<TipoAluguel> tipoAluguel = tipoAluguelService.getTipoAluguelById(dto.getIdTipoAluguel());
+                if (!tipoAluguel.isPresent()) {
+                    locacao.setTipoAluguel(null);
+                } else {
+                    locacao.setTipoAluguel(tipoAluguel.get());
+                }
             }
         }
         if (dto.getIdCarro() != null) {
@@ -125,28 +154,12 @@ public class LocacaoController {
                 locacao.setCarro(carro.get());
             }
         }
-        if (dto.getIdLojaRetirada() != null) {
-            Optional<Loja> loja = lojaService.getLojaById(dto.getIdLojaRetirada());
-            if (!loja.isPresent()) {
-                locacao.setLojaRetirada(null);
-            } else {
-                locacao.setLojaRetirada(loja.get());
-            }
-        }
         if (dto.getIdFuncionarioRetirada() != null) {
             Optional<Funcionario> funcionario = funcionarioService.getFuncionarioById(dto.getIdFuncionarioRetirada());
             if (!funcionario.isPresent()) {
                 locacao.setFuncionarioRetirada(null);
             } else {
                 locacao.setFuncionarioRetirada(funcionario.get());
-            }
-        }
-        if (dto.getIdLojaProgramada() != null) {
-            Optional<Loja> loja = lojaService.getLojaById(dto.getIdLojaProgramada());
-            if (!loja.isPresent()) {
-                locacao.setLojaProgramada(null);
-            } else {
-                locacao.setLojaProgramada(loja.get());
             }
         }
         if (dto.getIdLojaDevolucao() != null) {
@@ -165,15 +178,6 @@ public class LocacaoController {
                 locacao.setFuncionarioDevolucao(funcionario.get());
             }
         }
-        if (dto.getIdTipoAluguel() != null) {
-            Optional<TipoAluguel> tipoAluguel = tipoAluguelService.getTipoAluguelById(dto.getIdTipoAluguel());
-            if (!tipoAluguel.isPresent()) {
-                locacao.setTipoAluguel(null);
-            } else {
-                locacao.setTipoAluguel(tipoAluguel.get());
-            }
-        }
-
         return locacao;
     }
 }
