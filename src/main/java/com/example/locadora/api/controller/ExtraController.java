@@ -27,13 +27,13 @@ public class ExtraController {
     private final TipoExtraService tipoExtraService;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Extra> extras = service.getExtras();
         return ResponseEntity.ok(extras.stream().map(ExtraDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Extra> extra = service.getExtraById(id);
         if (!extra.isPresent()) {
@@ -42,7 +42,7 @@ public class ExtraController {
         return ResponseEntity.ok(extra.map(ExtraDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(ExtraDTO dto) {
         try {
             Extra extra = converter(dto);
@@ -52,7 +52,7 @@ public class ExtraController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, ExtraDTO dto) {
         if (!service.getExtraById(id).isPresent()) {
             return new ResponseEntity("Extra não encontrada", HttpStatus.NOT_FOUND);
@@ -67,7 +67,7 @@ public class ExtraController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Extra> extra = service.getExtraById(id);
         if (!extra.isPresent()) {

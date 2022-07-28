@@ -37,13 +37,13 @@ public class FuncionarioController {
     private final LojaService lojaService;
     private final CargoService cargoService;
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Funcionario> funcionarios = service.getFuncionarios();
         return ResponseEntity.ok(funcionarios.stream().map(FuncionarioDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Funcionario> funcionario = service.getFuncionarioById(id);
         if (!funcionario.isPresent()) {
@@ -52,7 +52,7 @@ public class FuncionarioController {
         return ResponseEntity.ok(funcionario.map(FuncionarioDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(FuncionarioDTO dto) {
         try {
             Funcionario funcionario = converter(dto);
@@ -63,7 +63,7 @@ public class FuncionarioController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, FuncionarioDTO dto) {
         if (!service.getFuncionarioById(id).isPresent()) {
             return new ResponseEntity("Funcionario não encontrado", HttpStatus.NOT_FOUND);
@@ -78,7 +78,7 @@ public class FuncionarioController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Funcionario> funcionario = service.getFuncionarioById(id);
         if (!funcionario.isPresent()) {

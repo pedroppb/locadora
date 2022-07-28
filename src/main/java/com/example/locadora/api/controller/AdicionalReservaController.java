@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/AdicionalReservas")
+@RequestMapping("/api/v1/adicionalReservas")
 @RequiredArgsConstructor
 
 public class AdicionalReservaController {
@@ -29,13 +29,13 @@ public class AdicionalReservaController {
     private final ReservaService reservaService;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<AdicionalReserva> adicionalReservas = service.getAdicionaisReserva();
         return ResponseEntity.ok(adicionalReservas.stream().map(AdicionalReservaDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<AdicionalReserva> adicionalReserva = service.getAdicionalReservaById(id);
         if (!adicionalReserva.isPresent()) {
@@ -44,7 +44,7 @@ public class AdicionalReservaController {
         return ResponseEntity.ok(adicionalReserva.map(AdicionalReservaDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(AdicionalReservaDTO dto) {
         try {
             AdicionalReserva adicionalReserva = converter(dto);
@@ -54,7 +54,7 @@ public class AdicionalReservaController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, AdicionalReservaDTO dto) {
         if (!service.getAdicionalReservaById(id).isPresent()) {
             return new ResponseEntity("AdicionalReserva não encontrada", HttpStatus.NOT_FOUND);
@@ -69,7 +69,7 @@ public class AdicionalReservaController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<AdicionalReserva> adicionalReserva = service.getAdicionalReservaById(id);
         if (!adicionalReserva.isPresent()) {

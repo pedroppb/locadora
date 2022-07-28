@@ -29,13 +29,13 @@ public class PrecoController {
     private final TipoAluguelService tipoAluguelService;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Preco> precos = service.getPrecos();
         return ResponseEntity.ok(precos.stream().map(PrecoDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Preco> preco = service.getPrecoById(id);
         if (!preco.isPresent()) {
@@ -44,7 +44,7 @@ public class PrecoController {
         return ResponseEntity.ok(preco.map(PrecoDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(PrecoDTO dto) {
         try {
             Preco preco = converter(dto);
@@ -54,7 +54,7 @@ public class PrecoController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, PrecoDTO dto) {
         if (!service.getPrecoById(id).isPresent()) {
             return new ResponseEntity("Preco não encontrada", HttpStatus.NOT_FOUND);
@@ -69,7 +69,7 @@ public class PrecoController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Preco> preco = service.getPrecoById(id);
         if (!preco.isPresent()) {

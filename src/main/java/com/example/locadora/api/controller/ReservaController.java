@@ -35,13 +35,13 @@ public class ReservaController {
         private final CategoriaService categoriaService;
         private final TipoAluguelService tipoAluguelService;
 
-        @GetMapping()
+        @GetMapping("/get")
         public ResponseEntity get() {
             List<Reserva> reservas = service.getReservas();
             return ResponseEntity.ok(reservas.stream().map(ReservaDTO::create).collect(Collectors.toList()));
         }
 
-        @GetMapping("/{id}")
+        @GetMapping("/get/{id}")
         public ResponseEntity get(@PathVariable("id") Long id) {
             Optional<Reserva> reserva = service.getReservaById(id);
             if (!reserva.isPresent()) {
@@ -49,7 +49,7 @@ public class ReservaController {
             }
             return ResponseEntity.ok(reserva.map(ReservaDTO::create));
         }
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(ReservaDTO dto) {
         try {
             Reserva reserva = converter(dto);
@@ -60,7 +60,7 @@ public class ReservaController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, ReservaDTO dto) {
         if (!service.getReservaById(id).isPresent()) {
             return new ResponseEntity("Reserva não encontrado", HttpStatus.NOT_FOUND);
@@ -75,7 +75,7 @@ public class ReservaController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Reserva> reserva = service.getReservaById(id);
         if (!reserva.isPresent()) {

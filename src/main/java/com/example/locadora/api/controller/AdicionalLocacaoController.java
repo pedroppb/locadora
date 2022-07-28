@@ -20,7 +20,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/v1/AdicionalLocacaos")
+@RequestMapping("/api/v1/adicionalLocacoes")
 @RequiredArgsConstructor
 
 public class AdicionalLocacaoController {
@@ -29,13 +29,13 @@ public class AdicionalLocacaoController {
     private final LocacaoService reservaService;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<AdicionalLocacao> adicionalLocacaos = service.getAdicionaislLocacao();
         return ResponseEntity.ok(adicionalLocacaos.stream().map(AdicionalLocacaoDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<AdicionalLocacao> adicionalLocacao = service.getAdicionalLocacaoById(id);
         if (!adicionalLocacao.isPresent()) {
@@ -44,7 +44,7 @@ public class AdicionalLocacaoController {
         return ResponseEntity.ok(adicionalLocacao.map(AdicionalLocacaoDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(AdicionalLocacaoDTO dto) {
         try {
             AdicionalLocacao adicionalLocacao = converter(dto);
@@ -54,7 +54,7 @@ public class AdicionalLocacaoController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, AdicionalLocacaoDTO dto) {
         if (!service.getAdicionalLocacaoById(id).isPresent()) {
             return new ResponseEntity("AdicionalLocacao não encontrada", HttpStatus.NOT_FOUND);
@@ -69,7 +69,7 @@ public class AdicionalLocacaoController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<AdicionalLocacao> adicionalLocacao = service.getAdicionalLocacaoById(id);
         if (!adicionalLocacao.isPresent()) {

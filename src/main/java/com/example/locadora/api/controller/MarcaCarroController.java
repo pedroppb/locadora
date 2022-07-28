@@ -23,13 +23,13 @@ public class MarcaCarroController {
     private final MarcaCarroService service;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<MarcaCarro> marcasCarro = service.getMarcasCarro();
         return ResponseEntity.ok(marcasCarro.stream().map(MarcaCarroDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<MarcaCarro> marcaCarro = service.getMarcaCarroById(id);
         if (!marcaCarro.isPresent()) {
@@ -38,7 +38,7 @@ public class MarcaCarroController {
         return ResponseEntity.ok(marcaCarro.map(MarcaCarroDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(MarcaCarroDTO dto) {
         try {
             MarcaCarro marcaCarro = converter(dto);
@@ -49,7 +49,7 @@ public class MarcaCarroController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, MarcaCarroDTO dto) {
         if (!service.getMarcaCarroById(id).isPresent()) {
             return new ResponseEntity("MarcaCarro não encontrado", HttpStatus.NOT_FOUND);
@@ -64,7 +64,7 @@ public class MarcaCarroController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<MarcaCarro> marcaCarro = service.getMarcaCarroById(id);
         if (!marcaCarro.isPresent()) {

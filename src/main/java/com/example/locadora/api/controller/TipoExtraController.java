@@ -24,13 +24,13 @@ public class TipoExtraController {
     private final TipoExtraService service;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<TipoExtra> tiposExtras = service.getTiposExtra();
         return ResponseEntity.ok(tiposExtras.stream().map(TipoExtraDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<TipoExtra> tipoExtra = service.getTipoExtraById(id);
         if (!tipoExtra.isPresent()) {
@@ -38,7 +38,7 @@ public class TipoExtraController {
         }
         return ResponseEntity.ok(tipoExtra.map(TipoExtraDTO::create));
     }
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(TipoExtraDTO dto) {
         try {
             TipoExtra tipoExtra = converter(dto);
@@ -49,7 +49,7 @@ public class TipoExtraController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, TipoExtraDTO dto) {
         if (!service.getTipoExtraById(id).isPresent()) {
             return new ResponseEntity("TipoExtra não encontrado", HttpStatus.NOT_FOUND);
@@ -64,7 +64,7 @@ public class TipoExtraController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<TipoExtra> tipoExtra = service.getTipoExtraById(id);
         if (!tipoExtra.isPresent()) {

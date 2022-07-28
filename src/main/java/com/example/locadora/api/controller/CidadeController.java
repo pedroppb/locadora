@@ -27,13 +27,13 @@ public class CidadeController {
     private final EstadoService paisService;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Cidade> cidades = service.getCidades();
         return ResponseEntity.ok(cidades.stream().map(CidadeDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Cidade> cidade = service.getCidadeById(id);
         if (!cidade.isPresent()) {
@@ -42,7 +42,7 @@ public class CidadeController {
         return ResponseEntity.ok(cidade.map(CidadeDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(CidadeDTO dto) {
         try {
             Cidade cidade = converter(dto);
@@ -52,7 +52,7 @@ public class CidadeController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, CidadeDTO dto) {
         if (!service.getCidadeById(id).isPresent()) {
             return new ResponseEntity("Cidade não encontrada", HttpStatus.NOT_FOUND);
@@ -67,7 +67,7 @@ public class CidadeController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Cidade> cidade = service.getCidadeById(id);
         if (!cidade.isPresent()) {

@@ -23,13 +23,13 @@ public class PaisController {
     private final PaisService service;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Pais> paises = service.getPaises();
         return ResponseEntity.ok(paises.stream().map(PaisDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Pais> pais = service.getPaisById(id);
         if (!pais.isPresent()) {
@@ -38,7 +38,7 @@ public class PaisController {
         return ResponseEntity.ok(pais.map(PaisDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(PaisDTO dto) {
         try {
             Pais pais = converter(dto);
@@ -49,7 +49,7 @@ public class PaisController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, PaisDTO dto) {
         if (!service.getPaisById(id).isPresent()) {
             return new ResponseEntity("Pais não encontrado", HttpStatus.NOT_FOUND);
@@ -64,7 +64,7 @@ public class PaisController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Pais> pais = service.getPaisById(id);
         if (!pais.isPresent()) {

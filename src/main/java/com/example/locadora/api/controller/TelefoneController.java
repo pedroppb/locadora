@@ -24,13 +24,13 @@ public class TelefoneController {
     private final TelefoneService service;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Telefone> telefones = service.getTelefones();
         return ResponseEntity.ok(telefones.stream().map(TelefoneDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Telefone> telefone = service.getTelefoneById(id);
         if (!telefone.isPresent()) {
@@ -39,7 +39,7 @@ public class TelefoneController {
         return ResponseEntity.ok(telefone.map(TelefoneDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(TelefoneDTO dto) {
         try {
             Telefone telefone = converter(dto);
@@ -50,7 +50,7 @@ public class TelefoneController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, TelefoneDTO dto) {
         if (!service.getTelefoneById(id).isPresent()) {
             return new ResponseEntity("Telefone não encontrado", HttpStatus.NOT_FOUND);
@@ -65,7 +65,7 @@ public class TelefoneController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Telefone> telefone = service.getTelefoneById(id);
         if (!telefone.isPresent()) {

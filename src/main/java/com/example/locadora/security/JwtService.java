@@ -1,5 +1,6 @@
 package com.example.locadora.security;
 
+
 import com.example.locadora.model.entity.pessoa.Usuario;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

@@ -26,13 +26,13 @@ public class EstadoController {
     private final PaisService paisService;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Estado> estados = service.getEstados();
         return ResponseEntity.ok(estados.stream().map(EstadoDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Estado> estado = service.getEstadoById(id);
         if (!estado.isPresent()) {
@@ -41,7 +41,7 @@ public class EstadoController {
         return ResponseEntity.ok(estado.map(EstadoDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(EstadoDTO dto) {
         try {
             Estado estado = converter(dto);
@@ -51,7 +51,7 @@ public class EstadoController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, EstadoDTO dto) {
         if (!service.getEstadoById(id).isPresent()) {
             return new ResponseEntity("Estado não encontrada", HttpStatus.NOT_FOUND);
@@ -66,7 +66,7 @@ public class EstadoController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Estado> estado = service.getEstadoById(id);
         if (!estado.isPresent()) {

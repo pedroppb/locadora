@@ -43,13 +43,13 @@ public class LocacaoController {
     private final TipoAluguelService tipoAluguelService;
     private final FuncionarioService funcionarioService;
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Locacao> locacoes = service.getLocacoes();
         return ResponseEntity.ok(locacoes.stream().map(LocacaoDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Locacao> locacao = service.getLocacaoById(id);
         if (!locacao.isPresent()) {
@@ -57,7 +57,7 @@ public class LocacaoController {
         }
         return ResponseEntity.ok(locacao.map(LocacaoDTO::create));
     }
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(LocacaoDTO dto) {
         try {
             Locacao locacao = converter(dto);
@@ -68,7 +68,7 @@ public class LocacaoController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, LocacaoDTO dto) {
         if (!service.getLocacaoById(id).isPresent()) {
             return new ResponseEntity("Locacao não encontrado", HttpStatus.NOT_FOUND);
@@ -83,7 +83,7 @@ public class LocacaoController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Locacao> locacao = service.getLocacaoById(id);
         if (!locacao.isPresent()) {

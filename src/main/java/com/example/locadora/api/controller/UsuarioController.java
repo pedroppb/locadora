@@ -1,11 +1,11 @@
 package com.example.locadora.api.controller;
 
-import com.example.locadora.api.dto.CredenciaisDTO;
+import com.example.locadora.api.dto.UsuarioDTO;
 import com.example.locadora.api.dto.TokenDTO;
-import com.example.locadora.security.JwtService;
-import com.example.locadora.model.entity.pessoa.Usuario;
-import com.example.locadora.service.pessoa.UsuarioService;
 import com.example.locadora.exception.SenhaInvalidaException;
+import com.example.locadora.model.entity.pessoa.Usuario;
+import com.example.locadora.security.JwtService;
+import com.example.locadora.service.pessoa.UsuarioService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -23,16 +23,16 @@ public class UsuarioController {
     private final PasswordEncoder passwordEncoder;
     private final JwtService jwtService;
 
-    @PostMapping()
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Usuario post(@RequestBody Usuario usuario ){
+    public Usuario salvar(@RequestBody Usuario usuario ){
         String senhaCriptografada = passwordEncoder.encode(usuario.getSenha());
         usuario.setSenha(senhaCriptografada);
         return usuarioService.salvar(usuario);
     }
 
     @PostMapping("/auth")
-    public TokenDTO autenticar(@RequestBody CredenciaisDTO credenciais){
+    public TokenDTO autenticar(@RequestBody UsuarioDTO credenciais){
         try{
             Usuario usuario = Usuario.builder()
                     .login(credenciais.getLogin())

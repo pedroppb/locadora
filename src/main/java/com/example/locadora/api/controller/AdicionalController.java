@@ -21,13 +21,13 @@ import java.util.stream.Collectors;
 public class AdicionalController {
     private final AdicionalService service;
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Adicional> adicionais = service.getAdicionais();
         return ResponseEntity.ok(adicionais.stream().map(AdicionalDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Adicional> adicional = service.getAdicionalById(id);
         if (!adicional.isPresent()) {
@@ -36,7 +36,7 @@ public class AdicionalController {
         return ResponseEntity.ok(adicional.map(AdicionalDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(AdicionalDTO dto) {
         try {
             Adicional adicional = converter(dto);
@@ -47,7 +47,7 @@ public class AdicionalController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, AdicionalDTO dto) {
         if (!service.getAdicionalById(id).isPresent()) {
             return new ResponseEntity("Adicional não encontrado", HttpStatus.NOT_FOUND);
@@ -62,7 +62,7 @@ public class AdicionalController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Adicional> adicional = service.getAdicionalById(id);
         if (!adicional.isPresent()) {

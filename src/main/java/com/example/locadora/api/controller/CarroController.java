@@ -30,13 +30,13 @@ public class CarroController {
     private final CategoriaService categoriaService;
     private final LojaService lojaService;
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Carro> carros = service.getCarros();
         return ResponseEntity.ok(carros.stream().map(CarroDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Carro> carro = service.getCarroById(id);
         if (!carro.isPresent()) {
@@ -45,7 +45,7 @@ public class CarroController {
         return ResponseEntity.ok(carro.map(CarroDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(CarroDTO dto) {
         try {
             Carro carro = converter(dto);
@@ -55,7 +55,7 @@ public class CarroController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("{id}")
+    @PutMapping("/get/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, CarroDTO dto) {
         if (!service.getCarroById(id).isPresent()) {
             return new ResponseEntity("Carro não encontrada", HttpStatus.NOT_FOUND);
@@ -70,7 +70,7 @@ public class CarroController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Carro> carro = service.getCarroById(id);
         if (!carro.isPresent()) {

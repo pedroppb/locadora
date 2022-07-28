@@ -20,13 +20,13 @@ import java.util.stream.Collectors;
 public class CategoriaController {
     private final CategoriaService service;
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Categoria> categorias = service.getCategorias();
         return ResponseEntity.ok(categorias.stream().map(CategoriaDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Categoria> categoria = service.getCategoriaById(id);
         if (!categoria.isPresent()) {
@@ -34,7 +34,7 @@ public class CategoriaController {
         }
         return ResponseEntity.ok(categoria.map(CategoriaDTO::create));
     }
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(CategoriaDTO dto) {
         try {
             Categoria categoria = converter(dto);
@@ -45,7 +45,7 @@ public class CategoriaController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/get/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, CategoriaDTO dto) {
         if (!service.getCategoriaById(id).isPresent()) {
             return new ResponseEntity("Categoria não encontrado", HttpStatus.NOT_FOUND);
@@ -60,7 +60,7 @@ public class CategoriaController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Categoria> categoria = service.getCategoriaById(id);
         if (!categoria.isPresent()) {

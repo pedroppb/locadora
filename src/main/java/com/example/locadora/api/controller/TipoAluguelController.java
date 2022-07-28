@@ -21,13 +21,13 @@ import java.util.stream.Collectors;
 
 public class TipoAluguelController {
     private final TipoAluguelService service;
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<TipoAluguel> TiposAluguel = service.getTiposAluguel();
         return ResponseEntity.ok(TiposAluguel.stream().map(TipoAluguelDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<TipoAluguel> tipoAluguel = service.getTipoAluguelById(id);
         if (!tipoAluguel.isPresent()) {
@@ -36,7 +36,7 @@ public class TipoAluguelController {
         return ResponseEntity.ok(tipoAluguel.map(TipoAluguelDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(TipoAluguelDTO dto) {
         try {
             TipoAluguel tipoAluguel = converter(dto);
@@ -47,7 +47,7 @@ public class TipoAluguelController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, TipoAluguelDTO dto) {
         if (!service.getTipoAluguelById(id).isPresent()) {
             return new ResponseEntity("TipoAluguel não encontrado", HttpStatus.NOT_FOUND);
@@ -62,7 +62,7 @@ public class TipoAluguelController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<TipoAluguel> tipoAluguel = service.getTipoAluguelById(id);
         if (!tipoAluguel.isPresent()) {

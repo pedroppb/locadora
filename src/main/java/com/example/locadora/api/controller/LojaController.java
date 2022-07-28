@@ -34,13 +34,13 @@ public class LojaController {
     private final PaisService paisService;
     private final TelefoneService telefoneService;
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Loja> lojas = service.getLojas();
         return ResponseEntity.ok(lojas.stream().map(LojaDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Loja> loja = service.getLojaById(id);
         if (!loja.isPresent()) {
@@ -49,7 +49,7 @@ public class LojaController {
         return ResponseEntity.ok(loja.map(LojaDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(LojaDTO dto) {
         try {
             Loja loja = converter(dto);
@@ -59,7 +59,7 @@ public class LojaController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, LojaDTO dto) {
         if (!service.getLojaById(id).isPresent()) {
             return new ResponseEntity("Loja não encontrada", HttpStatus.NOT_FOUND);
@@ -74,7 +74,7 @@ public class LojaController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Loja> loja = service.getLojaById(id);
         if (!loja.isPresent()) {

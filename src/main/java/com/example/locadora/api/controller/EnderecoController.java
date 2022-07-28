@@ -41,7 +41,7 @@ public class EnderecoController {
         return ResponseEntity.ok(endereco.map(EnderecoDTO::create));
     }
 
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(EnderecoDTO dto) {
         try {
             Endereco endereco = converter(dto);
@@ -51,7 +51,7 @@ public class EnderecoController {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
     }
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, EnderecoDTO dto) {
         if (!service.getEnderecoById(id).isPresent()) {
             return new ResponseEntity("Endereco não encontrada", HttpStatus.NOT_FOUND);
@@ -66,7 +66,7 @@ public class EnderecoController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Endereco> endereco = service.getEnderecoById(id);
         if (!endereco.isPresent()) {

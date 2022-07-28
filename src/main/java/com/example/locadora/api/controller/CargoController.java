@@ -23,13 +23,13 @@ public class CargoController {
 
     private final CargoService service;
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Cargo> cargos = service.getCargos();
         return ResponseEntity.ok(cargos.stream().map(CargoDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Cargo> cargo = service.getCargoById(id);
         if (!cargo.isPresent()) {
@@ -37,7 +37,7 @@ public class CargoController {
         }
         return ResponseEntity.ok(cargo.map(CargoDTO::create));
     }
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(CargoDTO dto) {
         try {
             Cargo cargo = converter(dto);
@@ -48,7 +48,7 @@ public class CargoController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, CargoDTO dto) {
         if (!service.getCargoById(id).isPresent()) {
             return new ResponseEntity("Cargo não encontrado", HttpStatus.NOT_FOUND);
@@ -63,7 +63,7 @@ public class CargoController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Cargo> cargo = service.getCargoById(id);
         if (!cargo.isPresent()) {

@@ -30,13 +30,13 @@ public class ClienteController {
     private final ClienteService service;
     private final EnderecoService enderecoService;
     private final TelefoneService telefoneService;
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Cliente> clientes = service.getClientes();
         return ResponseEntity.ok(clientes.stream().map(ClienteDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Cliente> cliente = service.getClienteById(id);
         if (!cliente.isPresent()) {
@@ -44,7 +44,7 @@ public class ClienteController {
         }
         return ResponseEntity.ok(cliente.map(ClienteDTO::create));
     }
-    @PostMapping()
+    @PostMapping("/post")
     public ResponseEntity post(ClienteDTO dto) {
         try {
             Cliente cliente = converter(dto);
@@ -55,7 +55,7 @@ public class ClienteController {
         }
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/put/{id}")
     public ResponseEntity atualizar(@PathVariable("id") Long id, ClienteDTO dto) {
         if (!service.getClienteById(id).isPresent()) {
             return new ResponseEntity("Cliente não encontrado", HttpStatus.NOT_FOUND);
@@ -70,7 +70,7 @@ public class ClienteController {
         }
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/delete/{id}")
     public ResponseEntity excluir(@PathVariable("id") Long id) {
         Optional<Cliente> cliente = service.getClienteById(id);
         if (!cliente.isPresent()) {
