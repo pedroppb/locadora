@@ -14,6 +14,9 @@
     <name>locadora</name>
     <description>locadora</description>
     <properties>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
+        <maven.compiler.release>11</maven.compiler.release>
         <java.version>11</java.version>
     </properties>
     <dependencies>
