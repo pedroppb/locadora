@@ -14,11 +14,13 @@ public class ExtraDTO {
     private Long id;
     private String numero;
     private Long idTipoExtra;
+    private Long idLocacao;
     private float valor;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataVencimento;
     @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataPagamento;
+
 
     public  static ExtraDTO create(Extra extra){
         ModelMapper modelMapper = new ModelMapper();

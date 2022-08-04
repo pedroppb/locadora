@@ -3,9 +3,13 @@ package com.example.locadora.api.controller;
 
 import com.example.locadora.model.entity.aluguel.extra.Extra;
 import com.example.locadora.service.aluguel.extra.ExtraService;
+import com.example.locadora.api.dto.ExtraDTO;
+
+import com.example.locadora.model.entity.aluguel.Locacao;
+import com.example.locadora.service.aluguel.LocacaoService;
 import com.example.locadora.model.entity.aluguel.extra.TipoExtra;
 import com.example.locadora.service.aluguel.extra.TipoExtraService;
-import com.example.locadora.api.dto.ExtraDTO;
+
 
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -25,7 +29,7 @@ import java.util.stream.Collectors;
 public class ExtraController {
     private final ExtraService service;
     private final TipoExtraService tipoExtraService;
-
+    private final LocacaoService locacaoService;
 
     @GetMapping("/get")
     public ResponseEntity get() {
@@ -92,7 +96,14 @@ public class ExtraController {
                 extra.setTipoExtra(tipoExtra.get());
             }
         }
-
+        if (dto.getIdLocacao() != null) {
+            Optional<Locacao> locacao = locacaoService.getLocacaoById(dto.getIdLocacao());
+            if (!locacao.isPresent()) {
+                extra.setLocacao(null);
+            } else {
+                extra.setLocacao(locacao.get());
+            }
+        }
         return extra;
     }
 

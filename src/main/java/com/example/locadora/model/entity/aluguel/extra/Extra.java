@@ -1,5 +1,7 @@
 package com.example.locadora.model.entity.aluguel.extra;
 
+import com.example.locadora.model.entity.aluguel.Locacao;
+import com.example.locadora.model.entity.carro.TipoAluguel;
 import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,6 +18,8 @@ public class Extra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String numero;
+    @ManyToOne
+    private Locacao locacao;
     @ManyToOne
     private TipoExtra tipoExtra;
     private float valor;

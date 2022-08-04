@@ -16,7 +16,6 @@ import java.time.LocalDate;
 public class ClienteDTO {
     private Long id;
     private String nome;
-    private String senha;
     private Integer tipo;
     private String cnpj;
     private String nomeContato;

@@ -42,6 +42,10 @@ public class ExtraService {
         {
             throw new NullPointerException("Extra com TipoAluguel inválido");
         }
+        if(extra.getLocacao() == null || extra.getLocacao().getId() == null || extra.getLocacao().getId() == 0 )
+        {
+            throw new NullPointerException("Extra com Locacao inválido");
+        }
         if( extra.getValor() <=0 )
         {
             throw new NullPointerException("Extra com Valor inválido");
