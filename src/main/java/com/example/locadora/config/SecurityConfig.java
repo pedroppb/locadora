@@ -47,15 +47,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 /*ADICIONAL*/
                 	.antMatchers("/api/v1/adicionais/get/id/**")
-                		.hasAnyRole("USER", "FUNC", "GEREN", "ADMIN")
+						.permitAll()
                 	.antMatchers("/api/v1/adicionais/get/**")
-                		.hasAnyRole("USER", "FUNC", "GEREN", "ADMIN")
+						.permitAll()
                 	.antMatchers("/api/v1/adicionais/post/**")
-                		.hasAnyRole("USER", "FUNC", "GEREN", "ADMIN")
+                		.hasAnyRole("GEREN", "ADMIN")
                 	.antMatchers("/api/v1/adicionais/put/**")
-                		.hasAnyRole("USER", "FUNC", "GEREN", "ADMIN")
+                		.hasAnyRole("GEREN", "ADMIN")
                 	.antMatchers("/api/v1/adicionais/delete/**")
-                		.hasAnyRole("USER", "FUNC", "GEREN", "ADMIN")
+                		.hasAnyRole("ADMIN")
 
 
                 /*ADICIONAL LOCACOES*/
@@ -319,7 +319,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 /*TIPO EXTRA*/
                 	.antMatchers("/api/v1/tiposExtra/get/id/**")
-                		.hasAnyRole("USER","FUNC", "GEREN", "ADMIN")
+                		.hasAnyRole("FUNC", "GEREN", "ADMIN")
                 	.antMatchers("/api/v1/tiposExtra/get/**")
                 		.hasAnyRole("USER","FUNC", "GEREN", "ADMIN")
                 	.antMatchers("/api/v1/tiposExtra/post/**")

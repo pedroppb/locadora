@@ -26,13 +26,13 @@ public class EnderecoController {
     private final CidadeService cidadeService;
 
 
-    @GetMapping()
+    @GetMapping("/get")
     public ResponseEntity get() {
         List<Endereco> enderecos = service.getEnderecos();
         return ResponseEntity.ok(enderecos.stream().map(EnderecoDTO::create).collect(Collectors.toList()));
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/get/{id}")
     public ResponseEntity get(@PathVariable("id") Long id) {
         Optional<Endereco> endereco = service.getEnderecoById(id);
         if (!endereco.isPresent()) {
