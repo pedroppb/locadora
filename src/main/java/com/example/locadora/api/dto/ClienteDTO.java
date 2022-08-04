@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.format.annotation.DateTimeFormat;
+
 import java.time.LocalDate;
 
 @Data
@@ -22,6 +24,7 @@ public class ClienteDTO {
     private String cpf;
     private String rg;
     private String cnh;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate cnhValidade;
     private String email;
 

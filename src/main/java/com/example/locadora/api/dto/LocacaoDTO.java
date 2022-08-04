@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.modelmapper.ModelMapper;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDateTime;
 
@@ -20,14 +21,17 @@ public class LocacaoDTO {
     private Long idCarro;
 
     private Long idLojaRetirada;
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime dataHoraRetirada;
     private Long idFuncionarioRetirada;
 
     private Long idLojaProgramada;
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime dataHoraProgramada;
 
 
     private Long idLojaDevolucao;
+    @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm:ss")
     private LocalDateTime dataHoraDevolucao;
     private Long idFuncionarioDevolucao;
 

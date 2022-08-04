@@ -5,6 +5,7 @@ import org.modelmapper.ModelMapper;
 import java.time.LocalDate;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @NoArgsConstructor
@@ -14,7 +15,9 @@ public class ExtraDTO {
     private String numero;
     private Long idTipoExtra;
     private float valor;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataVencimento;
+    @DateTimeFormat(pattern = "dd/MM/yyyy")
     private LocalDate dataPagamento;
 
     public  static ExtraDTO create(Extra extra){
